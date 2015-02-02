@@ -1,6 +1,47 @@
+<!DOCTYPE html>
 <html>
-<head>
-	<title><?php echo $title ?> - CodeIgniter 2 Tutorial</title>
-</head>
-<body>
-	<h1>CodeIgniter 2 Tutorial</h1>
+  <head>
+    <title>D0019E Webbutveckling II – Skriptspråk, VT15</title>
+    <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>css/main.css" rel="stylesheet">
+  </head>
+  
+  <!-- Teckenkodning --> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+  <body>
+
+<!-- Fixed navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">D0019E Webbutveckling II – Skriptspråk, VT15</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#om">Om</a></li>
+            <li><a href="#">Enkla PHP-sidor</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<div class="container">
+<div class="row col-md-3">
+<ul class="nav nav-pills nav-stacked">
+  <li role="presentation" class="active"><a href="#">Hem</a></li>
+  <li role="presentation"><a href="#">Sida ett</a></li>
+  <li role="presentation"><a href="#">Sida två</a></li>
+  <li role="presentation"><a href="#">Sida tre</a></li>
+  <li role="presentation"><a href="#">Sida fyra</a></li>
+  <li role="presentation"><a href="#">Sida fem</a></li>
+  <li role="presentation"><a href="#">Sida sex</a></li>
+  <li role="presentation"><a href="#">Sida sju</a></li>
+</ul>
+</div>
