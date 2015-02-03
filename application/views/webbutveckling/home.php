@@ -3,7 +3,7 @@
 
  <h2>Välkommen</h2>
  <p>
-    Den här webbsidan har skapats för att jag ska öva mig på att programmera i språket PHP.
+    Den här webbsidan har skapats för att jag ska öva mig på att skapa webbsidor.
  </p>
 
 </div>

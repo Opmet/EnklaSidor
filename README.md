@@ -6,9 +6,9 @@ D0019E Webbutveckling II – Skriptspråk, VT15
 
 (2) Välj Clone URI.
 
-(3) Ange https://github.com/Opmet/EnklaSidor.git
+(3) Ange https://github.com/Opmet/webbutveckling.git
 
-(4) Ange working directory till var/www/html/EnklaSidor.
+(4) Ange working directory till var/www/html/webbutveckling.
 
 (5) Välj Import existing projects.
 
