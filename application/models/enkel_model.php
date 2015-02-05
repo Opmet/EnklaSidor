@@ -1,4 +1,8 @@
 <?php
+/**
+ * Model till första uppgiften.
+ */
+
 class Enkel_model extends CI_Model {
 
 	function __construct()
@@ -6,10 +10,17 @@ class Enkel_model extends CI_Model {
 		parent::__construct();
 	}
 	
-	function printText()
+	/**
+	 * Validerar användarens inmatning i $_POST superglobal.
+	 * @param string $strNamn inmatning som ska valideras.
+	 * @return string retunerar den validerade strängen.
+	 */
+	function test_input($strNamn)
 	{
-		define('TEXT', 'Denna text är genererad med utskriftskommandot i PHP');
-		//$text = "Denna text är genererad med utskriftskommandot i PHP";
-		return TEXT;
+		$strNamn = trim($strNamn);
+		$strNamn = stripslashes($strNamn);
+		$strNamn = htmlspecialchars($strNamn);
+		
+		return $strNamn;
 	}
 }

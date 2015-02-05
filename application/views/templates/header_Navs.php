@@ -28,18 +28,6 @@
             <li><a href="<?php echo site_url('webbutveckling/view'); ?>">Om</a></li>
             <li class="active"><a href="<?php echo site_url('enkla_PHP_sidor/view'); ?>">Enkla PHP-sidor</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
-
-<div class="container">
-<div class="row col-md-3">
-<ul class="nav nav-pills nav-stacked">
-  <li role="presentation" class="active"><a href="#">Sida ett</a></li>
-  <li role="presentation"><a href="#">Sida två</a></li>
-  <li role="presentation"><a href="#">Sida tre</a></li>
-  <li role="presentation"><a href="#">Sida fyra</a></li>
-  <li role="presentation"><a href="#">Sida fem</a></li>
-  <li role="presentation"><a href="#">Sida sex</a></li>
-</ul>
-</div>
