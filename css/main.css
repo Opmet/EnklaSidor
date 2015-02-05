@@ -1,1 +1,11 @@
 @CHARSET "UTF-8";
+h1 {
+    color: #1a1a1a;
+    text-align: center;
+}
+
+p {
+    font-family: "Times New Roman";
+    font-size: 20px;
+    text-align: center;
+}

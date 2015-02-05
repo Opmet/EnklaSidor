@@ -28,8 +28,6 @@
             <li class="active"><a href="<?php echo site_url('webbutveckling/view'); ?>">Om</a></li>
             <li><a href="<?php echo site_url('enkla_PHP_sidor/view'); ?>">Enkla PHP-sidor</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
-
-<div class="container">
