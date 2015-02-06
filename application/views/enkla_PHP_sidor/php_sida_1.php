@@ -33,8 +33,15 @@
       
       <br />
       
-      <p><?php echo $strNamn; ?></p>
-      <p><?php echo $title; ?></p>
+      <p><?php echo "Hej $strNamn"; ?></p>
+      <br />
+      <p><?php echo 'Ditt namn innehåller ' . strlen($strNamn) . ' stycken bokstäver!'; ?></p>
+      <br />
+      <p><?php echo 'Ditt namn om man läser det från höger till vänster ' .
+                     ucfirst( mb_strtolower( strrev($strNamn) ) ) . '.'
+     		         . ' Där första bokstaven i ditt vända namn ska vara stor bokstav.'; ?>
+      </p>
+      <br />
       
    </div>
 </div>
