@@ -26,7 +26,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="<?php echo site_url('webbutveckling/view'); ?>">Om</a></li>
-            <li><a href="<?php echo site_url('enkla_PHP_sidor/view'); ?>">Enkla PHP-sidor</a></li>
+            <li><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_1'); ?>">Enkla PHP-sidor</a></li>
           </ul>
         </div>
       </div>

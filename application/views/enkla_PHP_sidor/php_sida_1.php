@@ -9,12 +9,12 @@
 <div class="container">
    <div class="row col-md-3">
       <ul class="nav nav-pills nav-stacked">
-         <li role="presentation" class="active"><a href="#">Sida ett</a></li>
-         <li role="presentation"><a href="#">Sida två</a></li>
-         <li role="presentation"><a href="#">Sida tre</a></li>
-         <li role="presentation"><a href="#">Sida fyra</a></li>
-         <li role="presentation"><a href="#">Sida fem</a></li>
-         <li role="presentation"><a href="#">Sida sex</a></li>
+         <li role="presentation" class="active"><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_1'); ?>">Sida ett</a></li>
+         <li role="presentation"><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_2'); ?>">Sida två</a></li>
+         <li role="presentation"><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_3'); ?>">Sida tre</a></li>
+         <li role="presentation"><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_4'); ?>">Sida fyra</a></li>
+         <li role="presentation"><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_5'); ?>">Sida fem</a></li>
+         <li role="presentation"><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_6'); ?>">Sida sex</a></li>
      </ul>
    </div>
    <div class="row col-md-9">
@@ -26,7 +26,7 @@
       <br />
       
       <!-- Enkelt formulär. Skriv in ditt namn. -->
-      <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view')); ?>" method="post">
+      <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_1')); ?>" method="post">
          Ditt namn: <input type="text" name="strNamn">
          <input type="submit">
       </form>
