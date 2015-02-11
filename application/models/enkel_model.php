@@ -63,4 +63,23 @@ class Enkel_model extends CI_Model {
 		return $data;
 	
 	}
+	
+	/**
+	 * Skapar variablerna till sidans vy.
+	 *
+	 * @return array Retunerar sidans vy variabler.
+	 */
+	public function page3()
+	{
+		$data = []; // Tom array.
+	
+		// Om POST. Validera användarens inmatning och skapa variablerna till vyn.
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			$data['arrVarden1'] = $this->test_input($_POST["varde1"]);
+			$data['arrVarden2'] = $this->test_input($_POST["varde2"]);
+		}
+	
+		return $data;
+	
+	}
 }
