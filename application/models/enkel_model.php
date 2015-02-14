@@ -139,4 +139,20 @@ class Enkel_model extends CI_Model {
 		return $data;
 	
 	}
+	
+	/**
+	 * 
+	 */
+	public function page5()
+	{
+		$data = []; // Tom array.
+	
+		// Om post är aktiv. Validera och beräkna.
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			
+		}
+	
+		return $data;
+	
+	}
 }

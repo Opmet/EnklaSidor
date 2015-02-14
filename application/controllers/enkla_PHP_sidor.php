@@ -31,7 +31,7 @@ class Enkla_PHP_sidor extends CI_Controller {
 				$data = $this->enkel_model->page4();
 				break;
 			case "php_sida_5":
-				echo "i is bar";
+				$data = $this->enkel_model->page5();
 				break;
 			case "php_sida_6":
 				echo "i is cake";

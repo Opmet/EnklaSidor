@@ -14,7 +14,7 @@
       
       <!-- Två värden. -->
       <div>
-         <h2>Villkorssatser</h2>
+         <h2>Triangel</h2>
   
          <div class="row col-md-6">
            <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_4')); ?>" method="post">
