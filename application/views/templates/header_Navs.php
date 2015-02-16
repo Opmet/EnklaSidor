@@ -4,6 +4,18 @@
     <title>D0019E Webbutveckling II – Skriptspråk, VT15</title>
     <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>css/main.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+       // Byter överförings metod till sida 6. 
+       $(document).ready(function(){
+          $("#get").click(function(){
+             $("form").attr("method", "get"); //Get
+          });
+          $("#post").click(function(){
+    	     $("form").attr("method", "post"); //Post
+          });
+       });
+    </script>
   </head>
   
   <!-- Teckenkodning --> 

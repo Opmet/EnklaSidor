@@ -143,13 +143,16 @@ class Enkel_model extends CI_Model {
 	/**
 	 * 
 	 */
-	public function page5()
+	public function page6()
 	{
 		$data = []; // Tom array.
+		
 	
-		// Om post är aktiv. Validera och beräkna.
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			
+		// Om request är aktiv. Validera.
+		if ( isset($_REQUEST["data"]) ) {
+			$data['data'] = $this->test_input($_REQUEST["data"]);
+			$data['namn'] = $this->test_input($_REQUEST["namn"]);
+			$data['telefon'] = $this->test_input($_REQUEST["telefon"]);
 		}
 	
 		return $data;
