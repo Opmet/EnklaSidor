@@ -16,14 +16,13 @@
           });
        });
     </script>
+    
+    <!-- Teckenkodning --> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
-  
-  <!-- Teckenkodning --> 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  
-  <body>
+<body>
 
-<!-- Navbar -->
+   <!-- Navbar -->
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
