@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * Kontroller för 6st enkla webbsidor med php på serversidan.
  */
