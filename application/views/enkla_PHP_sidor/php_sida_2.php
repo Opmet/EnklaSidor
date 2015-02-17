@@ -44,7 +44,7 @@
             	$arrBondgard[1] = 'Gris'; // Ersätter med en gris.
             	unset($arrBondgard['0']); // Tar bort första djuret.
             	
-            	echo 'Rad 3: Den nya djurbesättningen i arrBondgard = ' . print_r($arrBondgard, true) . '.';
+            	echo 'Rad 3: Den nya djurbesättningen i arrBondgard = ' . print_r(array_values($arrBondgard), true) . '.';
             	echo '<br /><br />';
             	echo 'Andra elementet har ersatts med en Gris.';
             	echo '<br />';
