@@ -23,7 +23,7 @@
   
   <body>
 
-<!-- Fixed navbar -->
+<!-- Navbar -->
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">

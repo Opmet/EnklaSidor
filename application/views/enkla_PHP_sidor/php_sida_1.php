@@ -1,8 +1,3 @@
-<!-- 
-     Head taggen är inkluderad i header.php som har kopplats samman med denna sidan i controllern! 
-     En stilmal har kopplats till elementen <h1> och <p> , Se filen main.css.
--->
-
 <!-- Definierar en konstant. -->
 <?php define('TEXT', 'Denna text är genererad med utskriftskommandot i PHP'); ?>
 
@@ -18,12 +13,12 @@
      </ul>
    </div>
    <div class="row col-md-9">
-      <h1>Sida ett</h1>
-      
-      <!-- Kallar på modellen och skriver ut en statisk text. --> 
-      <p><?php echo TEXT . '.'; ?></p>
-      
-      <br />
+      <div class="row col-md-1"></div>
+      <div class="row col-md-10">
+         <h1>Sida ett</h1>
+         
+         <!-- Kallar på modellen och skriver ut en statisk text. --> 
+         <p><?php echo TEXT . '.'; ?></p><br />
       
       <!-- Enkelt formulär. Skriv in ditt namn. -->
       <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_1')); ?>" method="post">
@@ -31,17 +26,17 @@
          <input type="submit">
       </form>
       
-      <br />
-      
-      <p><?php echo "Hej $strNamn"; ?></p>
-      <br />
-      <p><?php echo 'Ditt namn innehåller ' . strlen($strNamn) . ' stycken bokstäver!'; ?></p>
-      <br />
-      <p><?php echo 'Ditt namn om man läser det från höger till vänster ' .
-                     ucfirst( mb_strtolower( strrev($strNamn) ) ) . '.'
-     		         . ' Där första bokstaven i ditt vända namn ska vara stor bokstav.'; ?>
-      </p>
-      <br />
-      
+      <!-- Skriver ut resultat. -->
+      <?php
+         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+         	echo "<br />Hej $strNamn <br />";
+            echo 'Ditt namn innehåller ' . strlen($strNamn) . ' stycken bokstäver!<br />';
+            echo 'Ditt namn om man läser det från höger till vänster är ' .
+                  ucfirst( mb_strtolower( strrev($strNamn) ) ) . '.<br />'
+         		  . ' Där första bokstaven i ditt vända namn ska vara stor bokstav.';
+            }
+      ?>
+      </div>
+      <div class="row col-md-1"></div>
    </div>
 </div>

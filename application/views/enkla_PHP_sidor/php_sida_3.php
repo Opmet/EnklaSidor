@@ -10,59 +10,43 @@
      </ul>
    </div>
    <div class="row col-md-9">
-      <h1>Sida tre</h1>
-      
-      <!-- Två värden. -->
-      <div>
+      <div class="row col-md-1"></div>
+      <div class="row col-md-10">
+         <h1>Sida tre</h1>
          <h2>Villkorssatser</h2>
-  
-         <div class="row col-md-6">
+         
+           <!-- Två värden. -->
            <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_3')); ?>" method="post">
-  
-            <div class="row col-md-12">
-               <div class="row col-md-4">
-                 <div>Värde ett:</div>
-               </div>
-               <div class="row col-md-8">
-                 <input type="text" name="varde1">
-               </div>
-            </div>
-            <div class="row col-md-12">
-               <div class="row col-md-4">
-                 <div>Värde två:</div>
-               </div>
-               <div class="row col-md-8">
-                 <input type="text" name="varde2">
-               </div>
-            </div>
-            <p><input type="submit"></p>
+              Värde ett:<br />
+              <input type="text" name="varde1">
+              <br />
+              Värde två:<br />
+              <input type="text" name="varde2">
+              <br /><br />
+              <input type="submit">
            </form>
-         </div>
- 
-         <!-- Skriver ut resultat. -->
-         <div">
-         <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            	$arrVarden[0] = $arrVarden1;
-            	$arrVarden[1] = $arrVarden2;
+           
+           <!-- Skriver ut resultat. -->
+           <?php
+              if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                 $arrVarden[0] = $arrVarden1;
+            	 $arrVarden[1] = $arrVarden2;
             	
-            	if( strcmp($arrVarden[0],$arrVarden[1]) == 0 )
-            	{ echo "De två elementen i arrayen är lika."; }
-            	else { echo "De två elementen i arrayen är olika."; }
+            	 if( strcmp($arrVarden[0],$arrVarden[1]) == 0 )
+            	 { echo "<br />De två elementen i arrayen är lika."; }
+            	 else { echo "De två elementen i arrayen är olika."; }
             	
-            	$arrSiffror = array();
+            	 $arrSiffror = array();
             	
-            	echo "<br /><br /><p>En loop som fyller arrayen med siffrorna 0 - 9.</p><br />";
+            	 echo "<br /><br />En loop som fyller arrayen med siffrorna 0 - 9.<br />";
             	
-            	for($i = 0; $i < 10; ++$i)
-            	{
-            		$arrSiffror[$i] = $i;
+            	 for($i = 0; $i < 10; ++$i)
+            	 {
+            	    $arrSiffror[$i] = $i;
             		echo "$arrSiffror[$i], ";
-            	}
-            	
-            }
-         ?>
-         </div>
+            	 }
+              }
+           ?>
       </div>
    </div>
 </div>

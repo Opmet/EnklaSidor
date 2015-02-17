@@ -10,40 +10,24 @@
      </ul>
    </div>
    <div class="row col-md-9">
-      <h1>Sida fyra</h1>
+      <div class="row col-md-1"></div>
+      <div class="row col-md-10">
+         <h1>Sida fyra</h1>
       
-      <!-- Två värden. -->
-      <div>
+         <!-- Beräkna omkrets och area på en triangel. -->
          <h2>Triangel</h2>
-  
-         <div class="row col-md-6">
-           <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_4')); ?>" method="post">
-  
-            <div class="row col-md-12">
-               <div class="row col-md-4">
-                 <div>Längd:</div>
-               </div>
-               <div class="row col-md-8">
-                 <input type="text" name="langd">
-               </div>
-            </div>
-            <div class="row col-md-12">
-               <div class="row col-md-4">
-                 <div>Bredd:</div>
-               </div>
-               <div class="row col-md-8">
-                 <input type="text" name="bredd">
-               </div>
-            </div>
-
-<p>
-<input type="radio" name="radio" value="omkrets" checked>Beräkna omkrets
-<br>
-<input type="radio" name="radio" value="area">Beräkna area
-</p>
-            <p><input type="submit" value="BERÄKNA"></p>
-           </form>
-         </div>
+         <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_4')); ?>" method="post">
+            Längd:<br />
+            <input type="text" name="langd">
+            <br />
+            Bredd:<br />
+            <input type="text" name="bredd">
+            <br />
+            <input type="radio" name="radio" value="omkrets" checked>Beräkna omkrets
+            <input type="radio" name="radio" value="area">Beräkna area
+            <br /><br />
+            <input type="submit" value="BERÄKNA">
+         </form>
  
          <!-- Skriver ut resultat. -->
          <div>
@@ -51,11 +35,12 @@
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
             	
             	if( $radio == 'omkrets' )
-            	{ echo "Omkretsen på trianglen är " . (string) $omkrets; }
-            	else { echo "Arean på trianglen är " . (string) $area; }
+            	{ echo "<br />Omkretsen på trianglen är " . (string) $omkrets . "."; }
+            	else { echo "<br />Arean på trianglen är " . (string) $area . "."; }
             }
          ?>
          </div>
       </div>
+   <div class="row col-md-1"></div>
    </div>
 </div>

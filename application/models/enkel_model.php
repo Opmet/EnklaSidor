@@ -52,7 +52,7 @@ class Enkel_model extends CI_Model {
 	}
 	
 	/**
-	 * Behandlar inmatning från ett formulär som gäller ett namn.
+	 * Validerar inmatning från ett formulär som gäller ett namn.
 	 *
 	 * @uses $_POST['strNamn'] Ett namn.
 	 * @return array En array med ett validerat namn.
@@ -95,7 +95,7 @@ class Enkel_model extends CI_Model {
 	}
 	
 	/**
-	 * Behandlar inmatning från ett formulär som gäller en villkorssats.
+	 * Validerar inmatning från ett formulär som gäller en villkorssats.
 	 *
 	 * @uses $_POST['varde1'] Värde ett.
 	 * @uses $_POST['varde2'] Värde två.
@@ -121,7 +121,7 @@ class Enkel_model extends CI_Model {
 	 * @uses $_POST['radio'] Anger vilken radio knapp som är intryckt.
 	 * @uses $_POST['langd'] Anger längd på en triangel.
 	 * @uses $_POST['bredd'] Anger bredd på en triangel.
-	 * @return array En array med validerade och beräknade värden.
+	 * @return array En array med validerad och beräknad inmatning.
 	 */
 	public function page4()
 	{
@@ -141,13 +141,17 @@ class Enkel_model extends CI_Model {
 	}
 	
 	/**
+	 * Validerar inmatning från ett formulär som gäller att välja data överföring.
 	 * 
+	 * @uses $_REQUEST["data"] Vilken radio knapp som är intryckt.
+	 * @uses $_REQUEST["namn"] Användarens namn.
+	 * @uses $_REQUEST["telefon"] Användarens telefonnummer.
+	 * @return array En array med validerad data.
 	 */
 	public function page6()
 	{
 		$data = []; // Tom array.
 		
-	
 		// Om request är aktiv. Validera.
 		if ( isset($_REQUEST["data"]) ) {
 			$data['data'] = $this->test_input($_REQUEST["data"]);

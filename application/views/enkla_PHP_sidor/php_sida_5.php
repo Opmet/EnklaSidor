@@ -10,24 +10,22 @@
      </ul>
    </div>
    <div class="row col-md-9">
-      <h1>Sida fem</h1>
-      
-      <!-- Två värden. -->
-      <div>
+      <div class="row col-md-1"></div>
+      <div class="row col-md-10">
+         <h1>Sida fem</h1>
          <h2>Servervariabler</h2>
  
          <!-- Skriver ut resultat. -->
          <div>
          <?php
-         echo '<p>';
-         echo '<b>Användarens IP-adress:</b><br />' . $_SERVER['REMOTE_ADDR'] . '<br /><br />';
-         echo '<b>Namnet på den server som skriptet körs på:</b><br />' . $_SERVER['SERVER_NAME'] . '<br /><br />';
-         echo '<b>Filnamnet på PHP-sidan:</b><br />' . $_SERVER['PHP_SELF'] . '<br /><br />';
-         echo '<b>Vilken port som används för att kommunicera med webbservern:</b><br />' . $_SERVER['SERVER_PORT'] . '<br /><br />';
-         echo '<b>Vilken metod som använts för att köra PHP-sidan:</b><br />' . $_SERVER['REQUEST_METHOD'] . '<br /><br />';
-         echo '</p>';
+            echo '<br /><b>Användarens IP-adress:</b><br />' . $_SERVER['REMOTE_ADDR'] . '<br /><br />';
+            echo '<b>Namnet på den server som skriptet körs på:</b><br />' . $_SERVER['SERVER_NAME'] . '<br /><br />';
+            echo '<b>Filnamnet på PHP-sidan:</b><br />' . substr(strrchr($_SERVER['PHP_SELF'], "/"), 1) . '<br /><br />';
+            echo '<b>Vilken port som används för att kommunicera med webbservern:</b><br />' . $_SERVER['SERVER_PORT'] . '<br /><br />';
+            echo '<b>Vilken metod som använts för att köra PHP-sidan:</b><br />' . $_SERVER['REQUEST_METHOD'] . '<br /><br />';
          ?>
          </div>
       </div>
+      <div class="row col-md-1"></div>
    </div>
 </div>

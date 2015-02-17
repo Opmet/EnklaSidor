@@ -16,7 +16,6 @@
          <h2>Sända och ta emot data</h2>
          
          <!-- Två värden namn och telefon. -->
-         <div class="row col-md-12">
            <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_6')); ?>" method="get">
                Namn:<br />
                <input type="text" name="namn">
@@ -29,13 +28,12 @@
                <br /><br />
                <input type="submit" value="Sänd">
            </form>
-         </div>
          
          <!-- Skriver ut resultat. -->
          <div class="row col-md-12">
             <?php
             if ( isset($_REQUEST["data"]) ) {
-         	   echo "Ditt namn: $namn och telefon: $telefon skickades med $data metoden.";
+         	   echo "<br />Ditt namn: $namn och telefon: $telefon skickades med $data metoden.";
             }
             ?>
          </div>
