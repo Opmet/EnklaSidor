@@ -4,13 +4,9 @@
     <title>D0019E Webbutveckling II – Skriptspråk, VT15</title>
     <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>css/main.css" rel="stylesheet">
-    
-    <!-- Teckenkodning --> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
 <body>
-
-   <!-- Navbar -->
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">

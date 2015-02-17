@@ -14,8 +14,6 @@
       <div class="row col-md-10">
          <h1>Sida fem</h1>
          <h2>Servervariabler</h2>
- 
-         <!-- Skriver ut resultat. -->
          <div>
          <?php
             echo '<br /><b>Användarens IP-adress:</b><br />' . $_SERVER['REMOTE_ADDR'] . '<br /><br />';

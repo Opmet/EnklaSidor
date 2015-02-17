@@ -13,8 +13,6 @@
       <div class="row col-md-1"></div>
       <div class="row col-md-10">
          <h1>Sida fyra</h1>
-      
-         <!-- Beräkna omkrets och area på en triangel. -->
          <h2>Triangel</h2>
          <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_4')); ?>" method="post">
             Längd:<br />
@@ -28,8 +26,6 @@
             <br /><br />
             <input type="submit" value="BERÄKNA">
          </form>
- 
-         <!-- Skriver ut resultat. -->
          <div>
          <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {

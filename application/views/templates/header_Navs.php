@@ -6,23 +6,18 @@
     <link href="<?php echo base_url();?>css/main.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
-       // Byter överförings metod till sida 6. 
        $(document).ready(function(){
           $("#get").click(function(){
-             $("form").attr("method", "get"); //Get
+             $("form").attr("method", "get");
           });
           $("#post").click(function(){
-    	     $("form").attr("method", "post"); //Post
+    	     $("form").attr("method", "post");
           });
        });
     </script>
-    
-    <!-- Teckenkodning --> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
 <body>
-
-   <!-- Navbar -->
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">

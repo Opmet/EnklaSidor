@@ -1,6 +1,4 @@
-<!-- Definierar en konstant. -->
 <?php define('TEXT', 'Denna text är genererad med utskriftskommandot i PHP'); ?>
-
 <div class="container">
    <div class="row col-md-3">
       <ul class="nav nav-pills nav-stacked">
@@ -16,17 +14,11 @@
       <div class="row col-md-1"></div>
       <div class="row col-md-10">
          <h1>Sida ett</h1>
-         
-         <!-- Kallar på modellen och skriver ut en statisk text. --> 
          <p><?php echo TEXT . '.'; ?></p><br />
-      
-      <!-- Enkelt formulär. Skriv in ditt namn. -->
-      <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_1')); ?>" method="post">
-         Ditt namn: <input type="text" name="strNamn">
-         <input type="submit">
-      </form>
-      
-      <!-- Skriver ut resultat. -->
+         <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_1')); ?>" method="post">
+            Ditt namn: <input type="text" name="strNamn">
+            <input type="submit">
+         </form>
       <?php
          if ($_SERVER["REQUEST_METHOD"] == "POST") {
          	echo "<br />Hej $strNamn <br />";

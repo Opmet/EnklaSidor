@@ -14,7 +14,6 @@
       <div class="row col-md-10">
          <h1>Sida två</h1>
          <h2>Tre olika djur</h2>
-         <!-- Tre djur. -->
          <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_2')); ?>" method="post">
             Djur ett:<br />
             <input type="text" name="djur1" />
@@ -27,8 +26,6 @@
             <br /><br />
             <input type="submit">
          </form>
-         
-         <!-- Behandlar djur. -->
          <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
             	// Array med tre djur.

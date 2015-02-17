@@ -14,8 +14,6 @@
       <div class="row col-md-10">
          <h1>Sida tre</h1>
          <h2>Villkorssatser</h2>
-         
-           <!-- Två värden. -->
            <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_3')); ?>" method="post">
               Värde ett:<br />
               <input type="text" name="varde1">
@@ -25,8 +23,6 @@
               <br /><br />
               <input type="submit">
            </form>
-           
-           <!-- Skriver ut resultat. -->
            <?php
               if ($_SERVER["REQUEST_METHOD"] == "POST") {
                  $arrVarden[0] = $arrVarden1;
