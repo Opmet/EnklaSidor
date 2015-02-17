@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "webbutveckling";
 $route['404_override'] = '';
 
 
