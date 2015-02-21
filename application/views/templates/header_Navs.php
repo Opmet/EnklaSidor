@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>D0019E Webbutveckling II – Skriptspråk, VT15</title>
-    <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link href="<?php echo base_url();?>css/main.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>D0019E Webbutveckling II – Skriptspråk, VT15</title>
-    <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link href="<?php echo base_url();?>css/main.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
@@ -24,5 +24,9 @@
             <li><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_1'); ?>">Enkla PHP-sidor</a></li>
           </ul>
         </div>
+        
+        
+       
+
       </div>
     </nav>
