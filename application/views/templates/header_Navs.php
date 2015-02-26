@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
   <head>
     <title>D0019E Webbutveckling II – Skriptspråk, VT15</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link href="<?php echo base_url();?>css/main.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
        $(document).ready(function(){
           $("#get").click(function(){
@@ -15,7 +15,10 @@
           });
        });
     </script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="beskrivning" content="En övning på att skapa enkla webbsidor" />
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript" />
+    <meta name="author" content="Joakim Andersson" />
   </head>
 <body>
     <nav class="navbar navbar-default">
@@ -36,4 +39,15 @@
           </ul>
         </div>
       </div>
+      <div class="container">
+         <div class="row col-md-8"></div>
+         <div class="row col-md-4">
+            <a href="<?php echo site_url('account_contr/view/login'); ?>" class="btn btn-default btn-sm" role="button">
+                <span class="glyphicon glyphicon-log-in"></span> Logga in
+            </a>
+            <a href="<?php echo site_url('account_contr/account/new_account'); ?>" class="">
+                <span class="">Eller skapa nytt konto.</span>
+            </a>
+        </div>
+     </div>
     </nav>
