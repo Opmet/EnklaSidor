@@ -39,8 +39,7 @@
          <div class="row col-md-12">
             <?php
             if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
-         	   echo "<br />Namn: $name , Epost: $email och Lösen: $password .";
-         	   echo "<br />Test: $test";
+         	   echo "<br />$message";
             }
             ?>
          </div>

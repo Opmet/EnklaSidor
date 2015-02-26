@@ -27,19 +27,28 @@ class Account_model extends CI_Model {
 	
 	/**
 	 *  Skriver användardata till fil.
+	 *  
+	 *  För enkelhetens skull används codeigniters egna fil helper för att skriva till filen.
+	 *  @link https://ellislab.com/codeIgniter/user-guide/helpers/file_helper.html Codeigniters file helper.
+	 *  
+	 *  @param string $name Användarens namn.
+	 *  @param string $email Användarens epost.
+	 *  @param string $password Användarens lösenord.
+	 *  
+	 *  @return string Om kontot kunde skapas eller inte.
 	 */
 	public function createAccount($name,$email,$password)
 	{
-		$filedata = 'Namn=' . $name . ';Epost=' . $email . ';Lösenord=' . $password . ';\n';
+		$filedata = 'Namn=' . $name . ';Epost=' . $email . ';Lösenord=' . $password . ";\n";
 		$message;
 		
 		if ( ! write_file('./files/accounts.txt', $filedata, 'a'))
 		{
-			$message = 'Unable to write the file';
+			$message = 'Kunde inte skapa konto!';
 		}
 		else
 		{
-			$message = 'File written!';
+			$message = 'Ditt konto har skapats!';
 		}
 		
 		return $message;
@@ -60,20 +69,16 @@ class Account_model extends CI_Model {
 	{
 		$data = []; // Tom array.
 		
-		// Om post är aktiv. Validera.
+		// Om post är aktiv. Validera och skriv till fil.
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$data['name'] = $this->test_input($_POST["name"]);
 			$data['email'] = $this->test_input($_POST["email"]);
 			$data['password'] = $this->test_input($_POST["password"]);
 			
+			// Skriver användardatan till fil.
+			$data['message'] = $this->createAccount($data['name'], $data['email'], $data['password']);
+			
 		}
-		
-		$data['name'] = "Test";
-		$data['email'] = "Test";
-		$data['password'] = "Test";
-		
-		// Skriver användardata till fil.
-		$data['test'] = $this->createAccount($data['name'], $data['email'], $data['password']);
 		
 		return $data;
 	}
