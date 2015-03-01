@@ -5,7 +5,7 @@
       <div class="row col-md-10">
          <h1>Logga in</h1>
          <br /><br />
-         <form action="<?php echo htmlspecialchars(site_url('account_contr/account/login')); ?>" method="post" class="form-horizontal">
+         <form action="<?php echo htmlspecialchars(site_url('account/login')); ?>" method="post" class="form-horizontal">
             <div class="form-group">
                <label for="epost" class="col-md-3 control-label">Epost:</label>
                <div class="col-md-4">
