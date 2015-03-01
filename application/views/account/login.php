@@ -9,13 +9,13 @@
             <div class="form-group">
                <label for="epost" class="col-md-3 control-label">Epost:</label>
                <div class="col-md-4">
-                  <input type="email" class="form-control" id="epost" placeholder="Epost">
+                  <input type="email" name="email" class="form-control" id="email" placeholder="Epost">
                </div>
             </div>
             <div class="form-group">
                <label for="password" class="col-md-3 control-label">Lösenord:</label>
                <div class="col-md-4">
-                  <input type="password" class="form-control" id="password" placeholder="Lösenord">
+                  <input type="password" name="password" class="form-control" id="password" placeholder="Lösenord">
                </div>
             </div>
             <div class="form-group">
@@ -28,8 +28,8 @@
          </form>
          <div class="row col-md-12">
             <?php
-            if ( isset($_REQUEST["data"]) ) {
-         	   echo "<br />Ditt namn: $namn och telefon: $telefon skickades med $data metoden.";
+            if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
+            	echo "<br />$message";
             }
             ?>
          </div>
