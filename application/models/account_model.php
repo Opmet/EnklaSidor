@@ -28,13 +28,9 @@ class Account_model extends CI_Model {
 			// Om kontot finns försök skapa en session. 
 			// Annars om kontot inte finns skicka ett felmedelande.
 			if ( $account !== false ) {
-
 				$data['message'] = $this->createSession($account, $data['password']);
-				//$data['message'] = $this->createSession(1,1);
-				//$data['message'] = "Test!";
 			}
-			else
-			{
+			else {
 				$data['message'] = 'Felaktigt användarnamn och/eller felaktigt lösenord!';
 			}
 				
@@ -58,7 +54,6 @@ class Account_model extends CI_Model {
 			
 			// Skriver användardatan till fil.
 			$data['message'] = $this->createAccount($data['name'], $data['email'], $data['password']);
-			
 		}
 		
 		return $data;
