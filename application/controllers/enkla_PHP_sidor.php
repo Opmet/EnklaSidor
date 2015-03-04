@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');
 /**
  * Kontroller för 6st enkla webbsidor med php på serversidan.
  */
@@ -6,6 +6,7 @@ class Enkla_PHP_sidor extends CI_Controller {
 	
 	public function view($page)
 	{
+		$this->load->library('MySession');
 		$this->load->model('enkel_model'); // Laddar modell.
 		$this->load->helper('url');
 		$data = []; // Tom behållare.

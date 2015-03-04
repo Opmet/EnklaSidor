@@ -5,7 +5,7 @@
       <div class="row col-md-10">
          <h1>Skapa nytt konto</h1>
          <br /><br />
-         <form action="<?php echo htmlspecialchars(site_url('account/new_account')); ?>" method="post" class="form-horizontal">
+         <form action="<?php echo htmlspecialchars(site_url('account/create_new_account')); ?>" method="post" class="form-horizontal">
             <div class="form-group">
                <label for="name" class="col-md-3 control-label">Namn:</label>
                <div class="col-md-4">

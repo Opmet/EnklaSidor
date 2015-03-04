@@ -1,8 +1,8 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');
+
 /**
  * Account modell. En användare kan skapa ett konto på fil och logga in.
  */
-
 class Account_model extends CI_Model {
 
 	function __construct()
@@ -12,6 +12,7 @@ class Account_model extends CI_Model {
 	
 	/**
 	 *  En användare loggar in till sitt konto.
+	 *  @return array Märkdata till vyn om login fungerade eller inte.
 	 */
 	public function login()
 	{
@@ -29,8 +30,7 @@ class Account_model extends CI_Model {
 			// Annars om kontot inte finns skicka ett felmedelande.
 			if ( $account !== false ) {
 				$data['message'] = $this->createSession($account, $data['password']);
-			}
-			else {
+			}else{
 				$data['message'] = 'Felaktigt användarnamn och/eller felaktigt lösenord!';
 			}
 				
@@ -40,7 +40,23 @@ class Account_model extends CI_Model {
 	}
 	
 	/**
-	 * En användare skapar ett nytt konto.
+	 *  En användare loggar ut från sitt konto.
+	 */
+	public function logout()
+	{
+		//Starta session om inaktiv.
+		if ( $this->mysession->is_session_started() === FALSE ) session_start();
+		
+		// Om session variabel är aktiv avsluta.
+		if( isset($_SESSION["session"]) ) {
+			session_unset();
+			session_destroy();
+		}
+	}
+	
+	/**
+	 * En användare skapar ett nytt konto på fil.
+	 * @return array Om kontot kunde skapas eller inte.
 	 */
 	public function newAccount()
 	{
@@ -94,9 +110,7 @@ class Account_model extends CI_Model {
 		if ( ! write_file('./files/accounts.txt', $filedata, 'a'))
 		{
 			$message = 'Kunde inte skapa konto!';
-		}
-		else
-		{
+		}else{
 			$message = 'Ditt konto har skapats!';
 		}
 	
@@ -147,18 +161,18 @@ class Account_model extends CI_Model {
 	 */
 	private function createSession($p_account,$p_password)
 	{
-		$message = "Konto: " . $p_account . "Lösen: " . $p_password;
+		$message;
 	
 		// Om versaler och gemener inte stämmer i lösenordet skicka felmedelande.
 		// Annars skapa en session
 		if ( strpos($p_account,$p_password) === false ) {
 			$message = 'Felaktigt användarnamn och/eller felaktigt lösenord!';
-		}
-		else
-		{
-			session_start();
-			$_SESSION["session"] = "1";
-			$message = 'Välkomen, du är nu inloggad!';
+		}else{
+			if ( $this->mysession->is_session_started() === FALSE ) {
+				session_start();
+				$_SESSION['session'] = '1';
+				$message = 'Välkomen, du är nu inloggad!';
+			}
 		}
 	
 		return $message;

@@ -1,8 +1,8 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');
+
 /**
  * Model till första uppgiften.
  */
-
 class Enkel_model extends CI_Model {
 
 	function __construct()

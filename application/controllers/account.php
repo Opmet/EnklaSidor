@@ -3,7 +3,17 @@
  * Hanterar användarkonton.
  */
 class Account extends CI_Controller {
-			
+	
+	/**
+	 * Konstruktor
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('MySession');
+		$this->load->helper('url');
+	}
+	
 	/**
 	 * Hanterar inloggning.
 	 */
@@ -14,6 +24,19 @@ class Account extends CI_Controller {
 		$data = $this->account_model->login(); // Kör modell
 		
 		$this->view('login.php', $data); // Kör vyn.
+	}
+	
+	/**
+	 * Hanterar utloggning.
+	 */
+	public function logout()
+	{
+		$this->load->model('account_model'); // Laddar modell.
+		$this->account_model->logout(); // Kör modell
+		
+		echo "<script type='text/javascript'>alert( 'Du har nu loggat ut!' );</script>";
+
+		redirect( 'webbutveckling/view', 'refresh');
 	}
 	
 	/**
@@ -40,8 +63,6 @@ class Account extends CI_Controller {
 		{
 			show_404();
 		}
-	
-		$this->load->helper('url');
 	
 		$this->load->view('templates/header_Navs');
 		$this->load->view('account/' . $p_page , $p_data);
