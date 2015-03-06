@@ -17,23 +17,38 @@ class Account_model extends CI_Model {
 	public function login()
 	{
 		$data = []; // Tom array.
+		$data['message'] = false; //inget medelande.
+		$account = false;
 		
 		// Om post är aktiv. Validera inmatning, hämta kontot och logga in.
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$data['email'] = $this->test_input($_POST["email"]);
-			$data['password'] = $this->test_input($_POST["password"]);
-				
-			// Hämtar kontot från fil.
-			$account = $this->findAccount($data['email'], $data['password']);
+			$data['email'] = $this->my_form_validation->test_input($_POST["email"]);
+			$data['password'] = $this->my_form_validation->test_input($_POST["password"]);
 			
-			// Om kontot finns försök skapa en session. 
-			// Annars om kontot inte finns skicka ett felmedelande.
-			if ( $account !== false ) {
-				$data['message'] = $this->createSession($account, $data['password']);
-			}else{
-				$data['message'] = 'Felaktigt användarnamn och/eller felaktigt lösenord!';
-			}
+			// Kontrollera om epost och lösenordet är satt.
+			$data['email_is_set'] = $email = $this->my_form_validation->is_string_set($data['email']);
+			$data['password_is_set'] = $password = $this->my_form_validation->is_string_set($data['password']);
+			
+			// Om epost och lösenordet är satt.
+			if( $email == true && $password == true ){
+				$account = $this->findAccount($data['email'], $data['password']); // Hämta kontot.
 				
+				// Om kontot finns.
+				if ($account !== false) {
+					
+					// Om versaler och gemener stämmer i lösenordet.
+					if (strpos($account,$data['password']) !== FALSE) {
+						
+						// Skapa session.
+						if ( $this->mysession->is_session_started() === FALSE ) {
+							session_start();
+							$_SESSION['session'] = '1';
+							$data['message'] = 'Välkomen, du är nu inloggad!';
+						}
+					}else{ $data['message'] = 'Felaktigt användarnamn och/eller felaktigt lösenord!';}
+					
+				}else{ $data['message'] = 'Felaktigt användarnamn och/eller felaktigt lösenord!';}
+			}
 		}
 		
 		return $data;
@@ -64,30 +79,15 @@ class Account_model extends CI_Model {
 		
 		// Om post är aktiv. Validera och skriv till fil.
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$data['name'] = $this->test_input($_POST["name"]);
-			$data['email'] = $this->test_input($_POST["email"]);
-			$data['password'] = $this->test_input($_POST["password"]);
+			$data['name'] = $this->my_form_validation->test_input($_POST["name"]);
+			$data['email'] = $this->my_form_validation->test_input($_POST["email"]);
+			$data['password'] = $this->my_form_validation->test_input($_POST["password"]);
 			
 			// Skriver användardatan till fil.
 			$data['message'] = $this->createAccount($data['name'], $data['email'], $data['password']);
 		}
 		
 		return $data;
-	}
-	
-	/**
-	 * Validerar en sträng.
-	 *
-	 * @param string $p_str inmatning som ska valideras.
-	 * @return string retunerar den validerade strängen.
-	 */
-	private function test_input($p_str)
-	{
-		$str = trim($p_str);
-		$str = stripslashes($p_str);
-		$str = htmlspecialchars($p_str);
-	
-		return $str;
 	}
 	
 	/**
@@ -150,31 +150,5 @@ class Account_model extends CI_Model {
 		}
 	
 		return $account;
-	}
-	
-	/**
-	 *  Skapar en session om versaler och gemener stämmer i lösenordet.
-	 *
-	 *  @param string $p_account Kontot
-	 *  @param string $p_account Lösenordet
-	 *  @return string Medelande till användaren om en session skapats eller inte.
-	 */
-	private function createSession($p_account,$p_password)
-	{
-		$message;
-	
-		// Om versaler och gemener inte stämmer i lösenordet skicka felmedelande.
-		// Annars skapa en session
-		if ( strpos($p_account,$p_password) === false ) {
-			$message = 'Felaktigt användarnamn och/eller felaktigt lösenord!';
-		}else{
-			if ( $this->mysession->is_session_started() === FALSE ) {
-				session_start();
-				$_SESSION['session'] = '1';
-				$message = 'Välkomen, du är nu inloggad!';
-			}
-		}
-	
-		return $message;
 	}
 }

@@ -7,15 +7,15 @@
          <br /><br />
          <form action="<?php echo htmlspecialchars(site_url('account/login')); ?>" method="post" class="form-horizontal">
             <div class="form-group">
-               <label for="epost" class="col-md-3 control-label">Epost:</label>
+               <label for="email" class="col-md-3 control-label">Epost:</label>
                <div class="col-md-4">
-                  <input type="email" name="email" class="form-control" id="email" placeholder="Epost">
+                  <input type="email" name="email" class="form-control" placeholder="Epost">
                </div>
             </div>
             <div class="form-group">
                <label for="password" class="col-md-3 control-label">Lösenord:</label>
                <div class="col-md-4">
-                  <input type="password" name="password" class="form-control" id="password" placeholder="Lösenord">
+                  <input type="password" name="password" class="form-control" placeholder="Lösenord">
                </div>
             </div>
             <div class="form-group">
@@ -28,8 +28,21 @@
          </form>
          <div class="row col-md-12">
             <?php
-            if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
-            	echo "<br />$message";
+               if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
+               	
+               	
+               	if( $email_is_set == false ){
+            		   echo '<br />Inget angett epost.<br />';
+            	   }
+            		
+            	   if( $password_is_set == false ){
+            		   echo '<br />Inget angett lösenord.';
+            	   }
+            	   
+            	   //Om medelande finns så skriv ut.
+            	   if( $message !== false ){
+            	   	echo "<br />$message";
+            	   }
             }
             ?>
          </div>
