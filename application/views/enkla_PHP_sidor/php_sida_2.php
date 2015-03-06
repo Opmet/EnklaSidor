@@ -24,7 +24,7 @@
             Djur tre:<br />
             <input type="text" name="djur3" />
             <br /><br />
-            <input type="submit">
+            <input type="submit" value="Skicka">
          </form>
          <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
