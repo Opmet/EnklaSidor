@@ -3,6 +3,15 @@
 class Webbutveckling extends CI_Controller {
 
 	/**
+	 * Konstruktor
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('MySession');
+	}
+	
+	/**
 	 * Default controller route.
 	 */
 	public function index()

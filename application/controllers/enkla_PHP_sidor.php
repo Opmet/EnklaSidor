@@ -4,9 +4,17 @@
  */
 class Enkla_PHP_sidor extends CI_Controller {
 	
+	/**
+	 * Konstruktor
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('MySession');
+	}
+	
 	public function view($page)
 	{
-		$this->load->library('MySession');
 		$this->load->model('enkel_model'); // Laddar modell.
 		$this->load->helper('url');
 		$data = []; // Tom behållare.
@@ -36,7 +44,7 @@ class Enkla_PHP_sidor extends CI_Controller {
 				break;
 		}
 	
-		$this->load->view('templates/header_Navs');
+		$this->load->view('templates/header');
 		$this->load->view('enkla_PHP_sidor/'.$page, $data);
 		$this->load->view('templates/footer');
 	}

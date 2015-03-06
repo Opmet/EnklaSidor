@@ -65,7 +65,7 @@ class Account extends CI_Controller {
 			show_404();
 		}
 	
-		$this->load->view('templates/header_Navs');
+		$this->load->view('templates/header');
 		$this->load->view('account/' . $p_page , $p_data);
 		$this->load->view('templates/footer');
 	}
