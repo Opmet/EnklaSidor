@@ -1,8 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');
 /**
- * Hanterar användarkonton.
+ * Hanterar inloggning och utloggning och skapande av nytt användarkonto.
  */
 class Account extends CI_Controller {
+	
+	private $m_headlab = []; // Tom behållare för vy märken.
 	
 	/**
 	 * Konstruktor
@@ -13,6 +15,9 @@ class Account extends CI_Controller {
 		$this->load->library('My_Form_validation');
 		$this->load->library('MySession');
 		$this->load->helper('url');
+		
+		$this->m_headlab['header_nav_link1'] = '';
+		$this->m_headlab['header_nav_link2'] = '';
 	}
 	
 	/**
@@ -37,7 +42,7 @@ class Account extends CI_Controller {
 		
 		echo "<script type='text/javascript'>alert( 'Du har nu loggat ut!' );</script>";
 
-		redirect( 'webbutveckling/view', 'refresh');
+		redirect( 'welcome/view', 'refresh');
 	}
 	
 	/**
@@ -65,7 +70,7 @@ class Account extends CI_Controller {
 			show_404();
 		}
 	
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $this->m_headlab);
 		$this->load->view('account/' . $p_page , $p_data);
 		$this->load->view('templates/footer');
 	}

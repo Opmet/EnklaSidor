@@ -1,6 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');
 
 class Welcome extends CI_Controller {
+	
+	private $m_headlab = []; // Tom behållare för vy märken.
 
 	/**
 	 * Konstruktor
@@ -8,7 +10,11 @@ class Welcome extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->helper('url');
 		$this->load->library('MySession');
+		
+		$this->m_headlab['header_nav_link1'] = ' class="active"';
+		$this->m_headlab['header_nav_link2'] = '';
 	}
 	
 	/**
@@ -16,37 +22,32 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		//Visa 404 om sidan inte finns.
-		if ( ! file_exists(APPPATH.'/views/welcome/home.php'))
-		{
-			show_404();
-		}
-		
-		$this->load->helper('url');
-		
-		$this->load->view('templates/header');
-		$this->load->view('welcome/home.php');
-		$this->load->view('templates/footer');
+		$this->view('about.php'); // Kör vyn.
 	}
 	
 	/**
-	 * Wiew controller.
-	 *
-	 * @param string $page webbsidan som ska köras.
+	 * Hanterar klick på Om länk.
 	 */
-	public function view($page = 'home')
+	public function about()
+	{
+		$this->view('about.php'); // Kör vyn.
+	}
+	
+	/**
+	 * Sammanställer vyn.
+	 * @param string $p_page Webbsidan som vyn ska rendera.
+	 */
+	public function view($p_page)
 	{
 	
 		//Visa 404 om sidan inte finns.
-		if ( ! file_exists(APPPATH.'/views/welcome/'.$page.'.php'))
+		if ( ! file_exists(APPPATH.'/views/welcome/'.$p_page))
 		{
 			show_404();
 		}
 		
-		$this->load->helper('url');
-	
-		$this->load->view('templates/header');
-		$this->load->view('welcome/'.$page);
+		$this->load->view('templates/header', $this->m_headlab);
+		$this->load->view('welcome/'.$p_page);
 		$this->load->view('templates/footer');
 	
 	}

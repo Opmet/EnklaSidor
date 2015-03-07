@@ -4,7 +4,7 @@
  * Account modell. En användare kan skapa ett konto på fil och logga in.
  */
 class Account_model extends CI_Model {
-
+	
 	function __construct()
 	{
 		parent::__construct();

@@ -4,6 +4,8 @@
  */
 class Enkla_PHP_sidor extends CI_Controller {
 	
+	private $m_headlab = []; // Tom behållare för vy märken.
+	
 	/**
 	 * Konstruktor
 	 */
@@ -11,9 +13,16 @@ class Enkla_PHP_sidor extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('MySession');
+		
+		$this->m_headlab['header_nav_link1'] = '';
+		$this->m_headlab['header_nav_link2'] = ' class="active"';
 	}
 	
-	public function view($page)
+	/**
+	 * Sammanställer vyn.
+	 * @param string $p_page Webbsidan som vyn ska rendera.
+	 */
+	public function view($p_page)
 	{
 		$this->load->model('enkel_model'); // Laddar modell.
 		$this->load->helper('url');
@@ -44,8 +53,8 @@ class Enkla_PHP_sidor extends CI_Controller {
 				break;
 		}
 	
-		$this->load->view('templates/header');
-		$this->load->view('enkla_PHP_sidor/'.$page, $data);
+		$this->load->view('templates/header', $this->m_headlab);
+		$this->load->view('enkla_PHP_sidor/'.$page, $p_data);
 		$this->load->view('templates/footer');
 	}
 }
