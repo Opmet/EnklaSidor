@@ -3,25 +3,51 @@
 class Welcome extends CI_Controller {
 
 	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
+	 * Konstruktor
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('MySession');
+	}
+	
+	/**
+	 * Default controller route.
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		//Visa 404 om sidan inte finns.
+		if ( ! file_exists(APPPATH.'/views/welcome/home.php'))
+		{
+			show_404();
+		}
+		
+		$this->load->helper('url');
+		
+		$this->load->view('templates/header');
+		$this->load->view('welcome/home.php');
+		$this->load->view('templates/footer');
+	}
+	
+	/**
+	 * Wiew controller.
+	 *
+	 * @param string $page webbsidan som ska köras.
+	 */
+	public function view($page = 'home')
+	{
+	
+		//Visa 404 om sidan inte finns.
+		if ( ! file_exists(APPPATH.'/views/welcome/'.$page.'.php'))
+		{
+			show_404();
+		}
+		
+		$this->load->helper('url');
+	
+		$this->load->view('templates/header');
+		$this->load->view('welcome/'.$page);
+		$this->load->view('templates/footer');
+	
 	}
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

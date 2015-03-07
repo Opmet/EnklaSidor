@@ -31,11 +31,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo site_url('webbutveckling/view'); ?>">D0019E Webbutveckling II – Skriptspråk, VT15</a>
+          <a class="navbar-brand" href="<?php echo site_url('welcome/view'); ?>">D0019E Webbutveckling II – Skriptspråk, VT15</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="<?php echo site_url('webbutveckling/view'); ?>">Om</a></li>
+            <li><a href="<?php echo site_url('welcome/view'); ?>">Om</a></li>
             <li class="active"><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_1'); ?>">Enkla PHP-sidor</a></li>
           </ul>
         </div>
