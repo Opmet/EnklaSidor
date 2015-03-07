@@ -4,7 +4,7 @@
       <a href="<?php echo site_url('account/login'); ?>" class="btn btn-default btn-sm" role="button">
          <span class="glyphicon glyphicon-log-in"></span> Logga in
       </a>
-      <a href="<?php echo site_url('account/create_new_account'); ?>" class="">
+      <a href="<?php echo site_url('account/create_new_account'); ?>">
          <span class="">Eller skapa nytt konto.</span>
       </a>
    </div>

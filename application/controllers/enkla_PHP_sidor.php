@@ -29,13 +29,13 @@ class Enkla_PHP_sidor extends CI_Controller {
 		$data = []; // Tom behållare.
 	
 		//Visa 404 om sidan inte finns.
-		if ( ! file_exists(APPPATH.'/views/enkla_PHP_sidor/'.$page.'.php'))
+		if ( ! file_exists(APPPATH.'/views/enkla_PHP_sidor/'.$p_page.'.php'))
 		{
 			show_404();
 		}
 		
 		// Kör modellen.
-		switch ($page) {
+		switch ($p_page) {
 			case "php_sida_1":
 				$data = $this->enkel_model->page1();
 				break;
@@ -54,7 +54,7 @@ class Enkla_PHP_sidor extends CI_Controller {
 		}
 	
 		$this->load->view('templates/header', $this->m_headlab);
-		$this->load->view('enkla_PHP_sidor/'.$page, $p_data);
+		$this->load->view('enkla_PHP_sidor/'.$p_page, $data);
 		$this->load->view('templates/footer');
 	}
 }

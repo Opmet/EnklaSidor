@@ -42,7 +42,7 @@ class Account extends CI_Controller {
 		
 		echo "<script type='text/javascript'>alert( 'Du har nu loggat ut!' );</script>";
 
-		redirect( 'welcome/view', 'refresh');
+		redirect( 'welcome/about', 'refresh');
 	}
 	
 	/**
