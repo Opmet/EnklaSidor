@@ -1,27 +1,36 @@
 <!DOCTYPE html>
+<!-- Html 5 -->
+<!-- Visar webbläsaren att innehållet är på Svenska -->
 <html lang="sv">
   <head>
     <title>D0019E Webbutveckling II – Skriptspråk, VT15</title>
     <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- Eget css -->
     <link href="<?php echo base_url();?>css/main.css" rel="stylesheet">
     <script>
+       // Byter överförings metod till sida 6.
        $(document).ready(function(){
           $("#get").click(function(){
-             $("form").attr("method", "get");
+             $("form").attr("method", "get"); //Get
           });
           $("#post").click(function(){
-    	     $("form").attr("method", "post");
+    	     $("form").attr("method", "post"); //Post
           });
        });
     </script>
+    
+    <!-- Teckenkodning med åäö-->
     <meta charset="UTF-8" />
     <meta name="beskrivning" content="En övning på att skapa enkla webbsidor" />
     <meta name="keywords" content="HTML,CSS,XML,JavaScript" />
     <meta name="author" content="Joakim Andersson" />
   </head>
 <body>
+
+    <!-- Navigation header -->
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">

@@ -1,4 +1,11 @@
+<!-- 
+     Sida 1. Behandlar ett formulär med två funktioner.
+-->
+
+<!-- Definierar en konstant. -->
 <?php define('TEXT', 'Denna text är genererad med utskriftskommandot i PHP'); ?>
+
+<!-- Bootstraps grid-system med rader och kollomner anpassat för Medium devices Desktops -->
 <div class="container">
    <div class="row col-md-3">
       <ul class="nav nav-pills nav-stacked">
@@ -15,6 +22,8 @@
       <div class="row col-md-10">
          <h1>Sida ett</h1>
          <p><?php echo TEXT . '.'; ?></p><br />
+         
+         <!-- Formulär. Innan länken anges konverteras tecknen för att förhindra Cross-site Scripting attacks -->
          <form action="<?php echo htmlspecialchars(site_url('enkla_PHP_sidor/view/php_sida_1')); ?>" method="post">
             Ditt namn: <input type="text" name="strNamn">
             <input type="submit" value="Skicka">

@@ -1,3 +1,6 @@
+<!-- 
+     Sida 3. Leker med villkorssatser och array.
+-->
 <div class="container">
    <div class="row col-md-3">
       <ul class="nav nav-pills nav-stacked">

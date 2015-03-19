@@ -1,3 +1,6 @@
+<!-- 
+     Sida 2. Behandlar ett formulär med djur.
+-->
 <div class="container">
    <div class="row col-md-3">
       <ul class="nav nav-pills nav-stacked">

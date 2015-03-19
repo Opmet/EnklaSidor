@@ -1,3 +1,6 @@
+<!-- 
+     Sida 5. Leker med php Superglobal $_SERVER.
+-->
 <div class="container">
    <div class="row col-md-3">
       <ul class="nav nav-pills nav-stacked">
@@ -18,6 +21,8 @@
          <?php
             echo '<br /><b>Användarens IP-adress:</b><br />' . $_SERVER['REMOTE_ADDR'] . '<br /><br />';
             echo '<b>Namnet på den server som skriptet körs på:</b><br />' . $_SERVER['SERVER_NAME'] . '<br /><br />';
+            
+            // Hitta sista förekomsten av tecknet '/' och klipp av strängen.
             echo '<b>Filnamnet på PHP-sidan:</b><br />' . substr(strrchr($_SERVER['PHP_SELF'], "/"), 1) . '<br /><br />';
             echo '<b>Vilken port som används för att kommunicera med webbservern:</b><br />' . $_SERVER['SERVER_PORT'] . '<br /><br />';
             echo '<b>Vilken metod som använts för att köra PHP-sidan:</b><br />' . $_SERVER['REQUEST_METHOD'] . '<br /><br />';

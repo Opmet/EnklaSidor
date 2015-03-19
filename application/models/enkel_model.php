@@ -26,16 +26,21 @@ class Enkel_model extends CI_Model {
 	}
 	
 	/**
-	 * Beräknar omkrets på en triangel.
+	 * Omkrets och area på en triangel.
 	 * Omkrets = 2b+2h = 2(b+h)
 	 *
 	 * @param float p_langd triangelns längd.
 	 * @param float p_bredd triangelns bredd.
-	 * @return float En triangels omkrets.
+	 * @return array En triangels omkrets och area.
 	 */
 	private function beraknaOmkrets( $p_langd,$p_bredd )
 	{
-		return ( 2 * ($p_langd + $p_bredd) );
+		$data = []; // Tom array.
+		
+		$data['omkrets'] = 2 * ($p_langd + $p_bredd); //Beräknar omkrets
+		$data['area'] = $this->beraknaArea($p_langd,$p_bredd); //Beräknar area
+		
+		return $data;
 	}
 	
 	/**
@@ -130,10 +135,10 @@ class Enkel_model extends CI_Model {
 		// Om post är aktiv. Validera och beräkna.
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$data['radio'] = $this->test_input($_POST["radio"]);
-			$data['langd'] = (float) $this->test_input($_POST["langd"]);
-			$data['bredd'] = (float) $this->test_input($_POST["bredd"]);
-			$data['omkrets'] = $this->beraknaOmkrets( $data['langd'],$data['bredd'] ); //Beräknar omkrets
-			$data['area'] = $this->beraknaArea( $data['langd'],$data['bredd'] ); //Beräknar area
+			$langd = (float) $this->test_input($_POST["langd"]);
+			$bredd = (float) $this->test_input($_POST["bredd"]);
+			$output = $this->beraknaOmkrets($langd, $bredd); //Skriver till omkrets och area.
+			$data = array_merge($data, $output); //Slår ihop
 		}
 	
 		return $data;

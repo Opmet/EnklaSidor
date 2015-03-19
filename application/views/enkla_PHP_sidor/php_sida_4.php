@@ -1,3 +1,6 @@
+<!-- 
+     Sida 4. Leker med funktioner.
+-->
 <div class="container">
    <div class="row col-md-3">
       <ul class="nav nav-pills nav-stacked">
