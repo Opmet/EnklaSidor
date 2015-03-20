@@ -1,3 +1,6 @@
+<!-- 
+     Om användaren är utloggad.
+-->
 <div class="container">
    <div class="row col-md-8"></div>
    <div class="row col-md-4">

@@ -1,3 +1,6 @@
+<!-- 
+     Login till användarens konto.
+-->
 <div class="container">
    <div class="row col-md-3"></div>
    <div class="row col-md-9">
