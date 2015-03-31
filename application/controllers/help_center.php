@@ -1,9 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');
-
-class Welcome extends CI_Controller {
+/**
+ * 
+ */
+class Help_center extends CI_Controller {
 	
 	private $m_headlab = []; // Tom behållare för vy märken.
-
+	
 	/**
 	 * Konstruktor
 	 */
@@ -11,47 +13,43 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$this->load->helper('url');
 		$this->load->library('MySession');
 		
 		// Används för att visa vilken navigations länk som ska vara aktiv i vyn.
-		$this->m_headlab['header_nav_link1'] = ' class="active"';
+		$this->m_headlab['header_nav_link1'] = '';
 		$this->m_headlab['header_nav_link2'] = '';
-		$this->m_headlab['header_nav_link3'] = '';
+		$this->m_headlab['header_nav_link3'] = ' class="active"';
 	}
 	
 	/**
-	 * Default controller route.
+	 * Användaren skickar epost till oss.
 	 */
-	public function index()
+	public function email_us()
 	{
-		$this->view('about.php'); // Kör vyn.
-	}
-	
-	/**
-	 * Hanterar klick på Om länk.
-	 */
-	public function about()
-	{
-		$this->view('about.php'); // Kör vyn.
+		$this->load->helper('url');
+		//$this->load->model('account_model'); // Laddar modell.
+		//$data = $this->account_model->login(); // Kör modell
+		
+		$data = 'Test....';
+		
+		$this->view('email_us.php', $data); // Kör vyn.
 	}
 	
 	/**
 	 * Sammanställer vyn.
 	 * @param string $p_page Webbsidan som vyn ska rendera.
+	 * @param array $p_data Vy märken.
 	 */
-	public function view($p_page)
+	private function view($p_page, $p_data)
 	{
-	
 		//Visa 404 om sidan inte finns.
-		if ( ! file_exists(APPPATH.'/views/welcome/'.$p_page))
+		if ( ! file_exists(APPPATH.'/views/help_center/' . $p_page))
 		{
 			show_404();
 		}
-		
-		$this->load->view('templates/header', $this->m_headlab);
-		$this->load->view('welcome/'.$p_page);
-		$this->load->view('templates/footer');
 	
+		$this->load->view('templates/header', $this->m_headlab);
+		$this->load->view('help_center/' . $p_page , $p_data);
+		$this->load->view('templates/footer');
 	}
 }

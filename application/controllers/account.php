@@ -12,12 +12,15 @@ class Account extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		
 		$this->load->library('My_Form_validation');
 		$this->load->library('MySession');
 		$this->load->helper('url');
 		
+		// Används för att visa vilken navigations länk som ska vara aktiv i vyn.
 		$this->m_headlab['header_nav_link1'] = '';
 		$this->m_headlab['header_nav_link2'] = '';
+		$this->m_headlab['header_nav_link3'] = '';
 	}
 	
 	/**

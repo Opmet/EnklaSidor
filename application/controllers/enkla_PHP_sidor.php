@@ -12,10 +12,13 @@ class Enkla_PHP_sidor extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		
 		$this->load->library('MySession');
 		
+		// Används för att visa vilken navigations länk som ska vara aktiv i vyn.
 		$this->m_headlab['header_nav_link1'] = '';
 		$this->m_headlab['header_nav_link2'] = ' class="active"';
+		$this->m_headlab['header_nav_link3'] = '';
 	}
 	
 	/**

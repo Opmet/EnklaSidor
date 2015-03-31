@@ -46,6 +46,7 @@
           <ul class="nav navbar-nav">
             <li<?php echo $header_nav_link1; ?>><a href="<?php echo site_url('welcome/about'); ?>">Om</a></li>
             <li<?php echo $header_nav_link2; ?>><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_1'); ?>">Enkla PHP-sidor</a></li>
+            <li<?php echo $header_nav_link3; ?>><a href="<?php echo site_url('help_center/email_us'); ?>">Kontakta mig</a></li>
           </ul>
         </div>
       </div>
