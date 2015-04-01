@@ -113,10 +113,6 @@ class Account_model extends CI_Model {
 	{
 		$filedata = 'Namn=' . $p_name . ';Epost=' . $p_email . ';Lösenord=' . $p_password . ";\n";
 		$message;
-		
-		echo var_dump( get_file_info('./files/accounts.txt') );
-		echo "\n";
-		echo octal_permissions(fileperms('./files/accounts.txt'));
 	
 		if (!write_file('./files/accounts.txt', $filedata, 'a'))
 		{
