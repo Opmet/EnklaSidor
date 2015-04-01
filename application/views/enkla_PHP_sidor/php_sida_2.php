@@ -1,3 +1,4 @@
+<?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');?>
 <!-- 
      Sida 2. Behandlar ett formulär med djur.
 -->

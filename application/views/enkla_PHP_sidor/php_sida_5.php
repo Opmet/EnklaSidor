@@ -1,3 +1,4 @@
+<?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');?>
 <!-- 
      Sida 5. Leker med php Superglobal $_SERVER.
 -->

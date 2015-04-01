@@ -83,8 +83,15 @@ class Account_model extends CI_Model {
 			$data['email'] = $this->my_form_validation->test_input($_POST["email"]);
 			$data['password'] = $this->my_form_validation->test_input($_POST["password"]);
 			
-			// Skriver användardatan till fil.
-			$data['message'] = $this->createAccount($data['name'], $data['email'], $data['password']);
+			//Om lösenordet innehåller 3 eller fler tecken skapa kontot.
+			//Annars skicka felmedelande.
+			if ( strlen($data['password']) >= 3 )
+			{
+				// Skriver användardatan till fil.
+				$data['message'] = $this->createAccount($data['name'], $data['email'], $data['password']);
+			}else{
+				$data['message'] = 'Lösenordet måste innehålla minst 3 tecken!';
+			}
 		}
 		
 		return $data;
@@ -106,8 +113,12 @@ class Account_model extends CI_Model {
 	{
 		$filedata = 'Namn=' . $p_name . ';Epost=' . $p_email . ';Lösenord=' . $p_password . ";\n";
 		$message;
+		
+		echo var_dump( get_file_info('./files/accounts.txt') );
+		echo "\n";
+		echo octal_permissions(fileperms('./files/accounts.txt'));
 	
-		if ( ! write_file('./files/accounts.txt', $filedata, 'a'))
+		if (!write_file('./files/accounts.txt', $filedata, 'a'))
 		{
 			$message = 'Kunde inte skapa konto!';
 		}else{

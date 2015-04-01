@@ -1,3 +1,4 @@
+<?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');?>
 <!-- 
      Vyn för att skapa ett nytt konto.
 -->
@@ -25,12 +26,6 @@
                <label for="password" class="col-md-3 control-label">Lösenord:</label>
                <div class="col-md-4">
                   <input type="password" name="password" class="form-control" id="password" placeholder="Lösenord">
-               </div>
-            </div>
-            <div class="form-group">
-               <label for="repeat_password" class="col-md-3 control-label">Upprepa lösenord:</label>
-               <div class="col-md-4">
-                  <input type="password" class="form-control" id="repeat_password" placeholder="Upprepa lösenord">
                </div>
             </div>
             <div class="form-group">
