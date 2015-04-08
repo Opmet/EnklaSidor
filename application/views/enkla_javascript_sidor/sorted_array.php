@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');?>
 <!-- 
-     Skicka epost till mig.
+     Visar en array med tio slump tal mellan 1-100
 -->
 <div class="container">
    <div class="row col-md-3">

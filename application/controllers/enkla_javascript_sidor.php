@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');
 /**
- * 
+ * Hanterar övningen med javascript.
  */
 class Enkla_javascript_sidor extends CI_Controller {
 	
@@ -22,17 +22,13 @@ class Enkla_javascript_sidor extends CI_Controller {
 	}
 	
 	/**
-	 * 
+	 * Visar en array med tio slump tal mellan 1-100
 	 */
 	public function sorted_array()
 	{
 		$this->load->helper('url');
-		//$this->load->model('account_model'); // Laddar modell.
-		//$data = $this->account_model->login(); // Kör modell
 	
-		$data = 'Test....';
-	
-		$this->view('sorted_array.php', $data); // Kör vyn.
+		$this->view('sorted_array.php', null); // Kör vyn.
 	}
 	
 	/**
@@ -41,10 +37,8 @@ class Enkla_javascript_sidor extends CI_Controller {
 	public function email_us()
 	{
 		$this->load->helper('url');
-		//$this->load->model('account_model'); // Laddar modell.
-		//$data = $this->account_model->login(); // Kör modell
-		
-		$data = 'Test....';
+		$this->load->model('javascript_model'); // Laddar modell.
+		$data = $this->javascript_model->sendMail(); // Kör modell
 		
 		$this->view('email_us.php', $data); // Kör vyn.
 	}
