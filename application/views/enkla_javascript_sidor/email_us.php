@@ -13,9 +13,6 @@
    <div class="row col-md-9">
       <div class="row col-md-1"></div>
       <div class="row col-md-10">
-         <div class="jumbotron">
-            <br /><p>OBS: Detta är bara ett test! <br />Det går inte skicka iväg något epost då jag inte har tillgång till LTU servern.</p>
-         </div>
          <h1>Kontakta oss</h1>
          <br /><br />
          <div ng-app="MyJavascript" ng-controller="FormController">
@@ -48,6 +45,16 @@
          </form>
          </div>
          <div class="row col-md-12">
+         <?php
+               if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
+               	
+               	//Skriv ut meddelande.
+               	if( $message == true ){
+               		echo "<br />" . "Tack för meddelandet!";
+               	}
+               	else{ echo "<br />" . "Meddelandet kunde inte skickas!";}
+            }
+         ?>
          </div>
       </div>
       <div class="row col-md-1"></div>

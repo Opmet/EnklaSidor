@@ -17,10 +17,11 @@ class Javascript_model extends CI_Model {
 	 * @uses $_POST['name'] Webbanvändarens namn.
 	 * @uses $_POST['email'] Webbanvändarens svars adress.
 	 * @uses $_POST['message'] Meddelandet.
-	 * @return void
+	 * @return array Märkdata till vyn. Gick det skicka epost?.
 	 */
 	public function sendMail()
 	{
+		$data = []; // Tom array.
 	
 		// Om post är aktiv. Validera.
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,7 +31,6 @@ class Javascript_model extends CI_Model {
 			
 			//Med UTF-8.
 			$from_user = "=?UTF-8?B?".base64_encode($from_user)."?=";
-			$message = "=?UTF-8?B?".base64_encode($message)."?=";
 			
 			//Header
 			$headers = "From: $from_user <$sender_email>\r\n".
@@ -38,7 +38,9 @@ class Javascript_model extends CI_Model {
 					"Content-type: text/html; charset=UTF-8" . "\r\n";
 			
 			// Skicka epost till mig skälv.
-			$data['message'] = mail('joakim@itandersson.se', 'autoMail', $message, $headers);
+			$data['message'] = mail('joakim@itandersson.se', 'Auto post', $message, $headers);
 		}
+		
+		return $data;
 	}
 }
