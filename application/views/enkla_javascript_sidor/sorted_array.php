@@ -7,7 +7,7 @@
       <ul class="nav nav-pills nav-stacked">
          <li class="active"><a href="<?php echo site_url('enkla_javascript_sidor/sorted_array'); ?>">Sortera array</a></li>
          <li><a href="<?php echo site_url('enkla_javascript_sidor/email_us'); ?>">Kontakta oss</a></li>
-         <li><a href="<?php echo site_url('enkla_javascript_sidor/index'); ?>">Vilken webbläsare</a></li>
+         <li><a href="<?php echo site_url('enkla_javascript_sidor/web_browser'); ?>">Identifiera webbläsare</a></li>
       </ul>
    </div>
    <div class="row col-md-9">

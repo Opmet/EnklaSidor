@@ -44,6 +44,18 @@ class Enkla_javascript_sidor extends CI_Controller {
 	}
 	
 	/**
+	 * 
+	 */
+	public function web_browser()
+	{
+		$this->load->helper('url');
+		//$this->load->model('javascript_model'); // Laddar modell.
+		//$data = $this->javascript_model->sendMail(); // Kör modell
+	
+		$this->view('web_browser.php', null); // Kör vyn.
+	}
+	
+	/**
 	 * Sammanställer vyn.
 	 * @param string $p_page Webbsidan som vyn ska rendera.
 	 * @param array $p_data Vy märken.
