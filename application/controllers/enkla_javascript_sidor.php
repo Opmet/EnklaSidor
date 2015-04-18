@@ -27,7 +27,6 @@ class Enkla_javascript_sidor extends CI_Controller {
 	public function sorted_array()
 	{
 		$this->load->helper('url');
-	
 		$this->view('sorted_array.php', null); // Kör vyn.
 	}
 	
@@ -44,14 +43,11 @@ class Enkla_javascript_sidor extends CI_Controller {
 	}
 	
 	/**
-	 * 
+	 * Användaren kontrollerar vilken webbläsare och version denna använder.
 	 */
 	public function web_browser()
 	{
 		$this->load->helper('url');
-		//$this->load->model('javascript_model'); // Laddar modell.
-		//$data = $this->javascript_model->sendMail(); // Kör modell
-	
 		$this->view('web_browser.php', null); // Kör vyn.
 	}
 	

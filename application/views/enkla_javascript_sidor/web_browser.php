@@ -80,6 +80,12 @@
                 case "Firefox":
                     link = "http://sv.wikipedia.org/wiki/Mozilla_Firefox";
                     break;
+                case "Opera":
+                    link = "http://sv.wikipedia.org/wiki/Opera_%28webbl%C3%A4sare%29";
+                    break;
+                case "IE":
+                    link = "http://sv.wikipedia.org/wiki/Internet_Explorer";
+                    break;
                 default:
                     link = "Hittade inte länk!";
                     break;
