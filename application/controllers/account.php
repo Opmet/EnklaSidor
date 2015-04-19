@@ -21,6 +21,7 @@ class Account extends CI_Controller {
 		$this->m_headlab['header_nav_link1'] = '';
 		$this->m_headlab['header_nav_link2'] = '';
 		$this->m_headlab['header_nav_link3'] = '';
+		$this->m_headlab['header_nav_link4'] = '';
 	}
 	
 	/**

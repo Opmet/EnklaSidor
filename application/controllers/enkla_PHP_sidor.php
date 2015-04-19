@@ -19,6 +19,7 @@ class Enkla_PHP_sidor extends CI_Controller {
 		$this->m_headlab['header_nav_link1'] = '';
 		$this->m_headlab['header_nav_link2'] = ' class="active"';
 		$this->m_headlab['header_nav_link3'] = '';
+		$this->m_headlab['header_nav_link4'] = '';
 	}
 	
 	/**
