@@ -45,7 +45,7 @@
 | the active record class
 */
 
-$active_group = 'default';
+$active_group = 'localhost';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
@@ -64,6 +64,37 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['localhost']['hostname'] = 'localhost';
+$db['localhost']['username'] = 'root';
+$db['localhost']['password'] = 'Harenraskarisen600';
+$db['localhost']['database'] = 'cms_blog';
+$db['localhost']['dbdriver'] = 'mysql';
+$db['localhost']['dbprefix'] = '';
+$db['localhost']['pconnect'] = TRUE;
+$db['localhost']['db_debug'] = TRUE;
+$db['localhost']['cache_on'] = FALSE;
+$db['localhost']['cachedir'] = '';
+$db['localhost']['char_set'] = 'utf8';
+$db['localhost']['dbcollat'] = 'utf8_general_ci';
+$db['localhost']['swap_pre'] = '';
+$db['localhost']['autoinit'] = TRUE;
+$db['localhost']['stricton'] = FALSE;
+
+$db['ltu']['hostname'] = 'utbweb.its.ltu.se:3308';
+$db['ltu']['username'] = 'joaand-5';
+$db['ltu']['password'] = 'c85ryaCU';
+$db['ltu']['database'] = 'D0019E_joaand_5';
+$db['ltu']['dbdriver'] = 'mysql';
+$db['ltu']['dbprefix'] = '';
+$db['ltu']['pconnect'] = TRUE;
+$db['ltu']['db_debug'] = TRUE;
+$db['ltu']['cache_on'] = FALSE;
+$db['ltu']['cachedir'] = '';
+$db['ltu']['char_set'] = 'utf8';
+$db['ltu']['dbcollat'] = 'utf8_general_ci';
+$db['ltu']['swap_pre'] = '';
+$db['ltu']['autoinit'] = TRUE;
+$db['ltu']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

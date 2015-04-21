@@ -1,3 +1,4 @@
+      <?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');?>
       <div class="container">
 
       <div class="blog-header">
