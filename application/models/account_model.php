@@ -24,16 +24,16 @@ class Account_model extends CI_Model {
 		
 		// Om post är aktiv. Validera inmatning, hämta kontot och logga in.
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$data['email'] = $this->my_form_validation->test_input($_POST["email"]);
+			$data['name'] = $this->my_form_validation->test_input($_POST["name"]);
 			$data['password'] = $this->my_form_validation->test_input($_POST["password"]);
 			
-			// Kontrollera om epost och lösenordet är satt.
-			$data['email_is_set'] = $email = $this->my_form_validation->is_string_set($data['email']);
+			// Kontrollera om namn och lösenordet är satt.
+			$data['name_is_set'] = $name = $this->my_form_validation->is_string_set($data['name']);
 			$data['password_is_set'] = $password = $this->my_form_validation->is_string_set($data['password']);
 			
-			// Om epost och lösenordet är satt.
-			if( $email == true && $password == true ){
-				$account = $this->findAccount($data['email'], $data['password']); // Hämta kontot.
+			// Om namn och lösenordet är satt.
+			if( $name == true && $password == true ){
+				$account = $this->testAccount($data['name'], $data['password']); // Kontrollera att kontot finns.
 				
 				// Om kontot finns.
 				if ($account !== false) {
@@ -131,7 +131,8 @@ class Account_model extends CI_Model {
 	/**
 	 *  Skriver användardata till fil.
 	 *
-	 * @deprecated Ersatt med funktionen registerAccount().
+	 *  @deprecated Ersatt med funktionen registerAccount().
+	 *  
 	 *  För enkelhetens skull används codeigniters egna fil helper för att skriva till filen.
 	 *  @link https://ellislab.com/codeIgniter/user-guide/helpers/file_helper.html Codeigniters file helper.
 	 *
@@ -187,6 +188,8 @@ class Account_model extends CI_Model {
 	/**
 	 *  Hämtar ett konto.
 	 *
+	 *  @deprecated Ersatt med funktionen testAccount().
+	 *  
 	 *  För enkelhetens skull används codeigniters egna fil helper för att skriva till filen.
 	 *  @link https://ellislab.com/codeIgniter/user-guide/helpers/file_helper.html Codeigniters file helper.
 	 *
@@ -216,6 +219,29 @@ class Account_model extends CI_Model {
 		$account = substr($file, $start, ($end - $length) ); // Substring
 		}
 	
+		return $account;
+	}
+	
+	/**
+	 *  Kontrollera att kontot finns.
+	 *
+	 *  @param string $p_name Namn.
+	 *  @param string $p_password Lösenord.
+	 *
+	 *  @return string boolean Om kontot hittas retuneras tillhörande lösenord annars false.
+	 */
+	private function testAccount($p_name,$p_password)
+	{
+		$account = false;
+		
+		$sql = "SELECT password FROM User WHERE username=" . $this->db->escape($p_name);
+		$query = $this->db->query($sql);
+		
+		foreach ($query->result() as $row)
+		{
+			$account = $row->password;
+		}
+		
 		return $account;
 	}
 }

@@ -11,9 +11,9 @@
          <br /><br />
          <form action="<?php echo htmlspecialchars(site_url('account/login')); ?>" method="post" class="form-horizontal">
             <div class="form-group">
-               <label for="email" class="col-md-3 control-label">Epost:</label>
+               <label for="name" class="col-md-3 control-label">Namn:</label>
                <div class="col-md-4">
-                  <input type="email" name="email" class="form-control" placeholder="Epost">
+                  <input type="name" name="name" class="form-control" placeholder="Namn">
                </div>
             </div>
             <div class="form-group">
@@ -35,8 +35,8 @@
                if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
                	
                	
-               	if( $email_is_set == false ){
-            		   echo '<br />Inget angett epost.<br />';
+               	if( $name_is_set == false ){
+            		   echo '<br />Inget angett namn.<br />';
             	   }
             		
             	   if( $password_is_set == false ){
