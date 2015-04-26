@@ -50,13 +50,13 @@ class Account extends CI_Controller {
 	}
 	
 	/**
-	 * Hanterar skapandet av nytt användarkonto.
+	 * Registrera nytt användarkonto.
 	 */
-	public function create_new_account()
+	public function register()
 	{
 		$this->load->helper('file');
 		$this->load->model('account_model'); // Laddar modell.
-		$data = $data = $this->account_model->newAccount(); // Kör modell
+		$data = $data = $this->account_model->register(); // Kör modell
 		
 		$this->view('new_account.php', $data); // Kör vyn.
 	}

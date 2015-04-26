@@ -8,6 +8,8 @@ class Account_model extends CI_Model {
 	function __construct()
 	{
 		parent::__construct();
+		
+		$this->load->database();
 	}
 	
 	/**
@@ -71,6 +73,7 @@ class Account_model extends CI_Model {
 	
 	/**
 	 * En användare skapar ett nytt konto på fil.
+	 * @deprecated Ersatt med funktionen register().
 	 * @return array Om kontot kunde skapas eller inte.
 	 */
 	public function newAccount()
@@ -98,8 +101,37 @@ class Account_model extends CI_Model {
 	}
 	
 	/**
+	 * Användare registrerar sig.
+	 * @return array Om kontot kunde skapas eller inte.
+	 */
+	public function register()
+	{
+		$data = []; // Tom array.
+	
+		// Om post är aktiv. Validera och registrera konto i databasen.
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			$data['name'] = $this->my_form_validation->test_input($_POST["name"]);
+			$data['email'] = $this->my_form_validation->test_input($_POST["email"]);
+			$data['password'] = $this->my_form_validation->test_input($_POST["password"]);
+				
+			//Om lösenordet innehåller 3 eller fler tecken skapa kontot.
+			//Annars skicka felmedelande.
+			if ( strlen($data['password']) >= 3 )
+			{
+				// Skriver användardatan till databas.
+				$data['message'] = $this->registerAccount($data['name'], $data['email'], $data['password']);
+			}else{
+				$data['message'] = 'Lösenordet måste innehålla minst 3 tecken!';
+			}
+		}
+	
+		return $data;
+	}
+	
+	/**
 	 *  Skriver användardata till fil.
 	 *
+	 * @deprecated Ersatt med funktionen registerAccount().
 	 *  För enkelhetens skull används codeigniters egna fil helper för att skriva till filen.
 	 *  @link https://ellislab.com/codeIgniter/user-guide/helpers/file_helper.html Codeigniters file helper.
 	 *
@@ -117,6 +149,34 @@ class Account_model extends CI_Model {
 		if (!write_file('./files/accounts.txt', $filedata, 'a'))
 		{
 			$message = 'Kunde inte skapa konto!';
+		}else{
+			$message = 'Ditt konto har skapats!';
+		}
+	
+		return $message;
+	}
+	
+	/**
+	 *  Skriver användardata till databas.
+	 *
+	 *  @param string $p_name Användarens namn.
+	 *  @param string $p_email Användarens epost.
+	 *  @param string $p_password Användarens lösenord.
+	 *
+	 *  @return string Om kontot kunde skapas eller inte.
+	 */
+	private function registerAccount($p_name,$p_email,$p_password)
+	{
+		$sql = "INSERT INTO User (username, email, password)
+        VALUES (".$this->db->escape($p_name).", ".$this->db->escape($p_email).", ".$this->db->escape($p_password).")";
+			
+		$this->db->db_debug = FALSE; // Debuggern stängs av så att felmedelande kan skickas till användaren om ett fel inträffar. 
+		
+		// Om kontot inte kunde skapas skicka felmeddelande.
+		// Annars kunde kontot skapas.
+		if (!$this->db->query($sql))
+		{
+			$message = 'Kunde inte skapa konto!' . "<br/>DB säger: " . $this->db->_error_message();
 		}else{
 			$message = 'Ditt konto har skapats!';
 		}

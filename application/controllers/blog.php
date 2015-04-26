@@ -14,7 +14,6 @@ class Blog extends CI_Controller {
 		parent::__construct();
 		
 		$this->load->library('MySession');
-		$this->load->database();
 		
 		// Används för att visa vilken navigations länk som ska vara aktiv i vyn.
 		$this->m_headlab['header_nav_link1'] = '';
