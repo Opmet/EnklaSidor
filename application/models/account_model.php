@@ -113,17 +113,33 @@ class Account_model extends CI_Model {
 			$data['name'] = $this->my_form_validation->test_input($_POST["name"]);
 			$data['email'] = $this->my_form_validation->test_input($_POST["email"]);
 			$data['password'] = $this->my_form_validation->test_input($_POST["password"]);
-				
-			//Om lösenordet innehåller 3 eller fler tecken skapa kontot.
-			//Annars skicka felmedelande.
-			if ( strlen($data['password']) >= 3 )
-			{
-				// Skriver användardatan till databas.
-				$data['message'] = $this->registerAccount($data['name'], $data['email'], $data['password']);
-			}else{
-				$data['message'] = 'Lösenordet måste innehålla minst 3 tecken!';
-			}
-		}
+			
+			// Kontrollera om namn och lösenordet är satt.
+			$data['name_is_set'] = $name = $this->my_form_validation->is_string_set($data['name']);
+			$data['password_is_set'] = $password = $this->my_form_validation->is_string_set($data['password']);
+			
+			// Om namn och lösenordet är satt.
+			// Annars skicka felmedelande.
+		    if( $name == true && $password == true ){
+			
+			   //Om namnet inte redan är upptaget i databasen.
+			   //Annars skicka felmedelande.
+			   if( !$this->testName( $data['name'] ) ){
+			
+			      //Om lösenordet innehåller 3 eller fler tecken skapa kontot.
+			      //Annars skicka felmedelande.
+			      if ( strlen($data['password']) >= 3 )
+			      {
+				      // Skriver användardatan till databas.
+				      $data['message'] = $this->registerAccount($data['name'], $data['email'], $data['password']);
+			      }
+			      else{$data['message'] = 'Lösenordet måste innehålla minst 3 tecken!';}
+			   
+			   }
+			   else{$data['message'] = 'Kunde inte skapa konto!' . "<br/>Namnet är upptaget! ";}
+		      }
+		      else{$data['message'] = 'Alla fält måste vara ifyllda!';}
+		   }
 	
 		return $data;
 	}
@@ -170,18 +186,16 @@ class Account_model extends CI_Model {
 	{
 		$sql = "INSERT INTO User (username, email, password)
         VALUES (".$this->db->escape($p_name).", ".$this->db->escape($p_email).", ".$this->db->escape($p_password).")";
-			
-		$this->db->db_debug = FALSE; // Debuggern stängs av så att felmedelande kan skickas till användaren om ett fel inträffar. 
 		
 		// Om kontot inte kunde skapas skicka felmeddelande.
 		// Annars kunde kontot skapas.
 		if (!$this->db->query($sql))
 		{
-			$message = 'Kunde inte skapa konto!' . "<br/>DB säger: " . $this->db->_error_message();
+			$message = 'Kunde inte skapa konto!';
 		}else{
 			$message = 'Ditt konto har skapats!';
 		}
-	
+		
 		return $message;
 	}
 	
@@ -243,5 +257,24 @@ class Account_model extends CI_Model {
 		}
 		
 		return $account;
+	}
+	
+	/**
+	 *  Kontrollerar om namnet finns i databasen.
+	 *
+	 *  @param string $p_name Namn.
+	 *  @return string boolean Om namnet finns i databasen retuneras true annars false.
+	 */
+	private function testName($p_name)
+	{
+		$testName = false;
+	
+		$sql = "SELECT username FROM User WHERE username=" . $this->db->escape($p_name);
+		$query = $this->db->query($sql);
+		
+		//Om namnet finns i databasen. Sätt true.
+		if( $query->num_rows() === 1 ){ $testName = true; }
+		
+		return $testName;
 	}
 }
