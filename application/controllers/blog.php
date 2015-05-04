@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('Ingen direkt åtkomst tillåts');
 /**
- * 
+ * Hanterar bloggen.
  */
 class Blog extends CI_Controller {
 	
@@ -23,15 +23,98 @@ class Blog extends CI_Controller {
 	}
 	
 	/**
-	 * Användaren skickar epost till oss.
+	 * Visa vyn flow.
 	 */
-	public function index()
+	public function show_flow()
 	{
 		$this->load->helper('url');
-		//$this->load->model('javascript_model'); // Laddar modell.
-		//$data = $this->javascript_model->sendMail(); // Kör modell
+		$this->view('flow.php', null); // Kör vyn.
+	}
+	
+	/**
+	 * Visa vyn post.
+	 */
+	public function show_post()
+	{
+		$this->load->helper('url');
 		
-		$this->view('index.php', null); // Kör vyn.
+		// Om session inte är startad.
+		if( $this->mysession->is_session_started() === FALSE ) {
+			session_start();
+			
+			// Om användaren inte är inloggad.
+			if( !isset($_SESSION['session']) ){
+				echo "<script type='text/javascript'>alert( 'Logga in först!' );</script>";
+				redirect('/account/login/', 'refresh');
+			}
+		}
+		
+		$this->view('post.php', null); // Kör vyn.
+	}
+	
+	/**
+	 * Skapa nytt blogg inlägg.
+	 * 
+	 * @uses $_POST['title'] Inläggets rubrik.
+	 * @uses $_POST['message'] Meddelandet.
+	 * @uses image_upload() För att ladda upp bild.
+	 */
+	public function set_post()
+	{
+		$this->load->helper(array('form', 'url'));
+		
+		$this->load->library('My_Form_validation');
+		$this->load->library('form_validation');
+		$this->load->library('upload');
+		
+		$this->form_validation->set_rules('title', 'Rubrik', 'required');
+		$this->form_validation->set_rules('message', 'Meddelande', 'required');
+		
+		$this->form_validation->set_message('required', 'Fyll i fältet: %s!');
+		
+		// Om fälten inte validerar eller bilden inte kunde laddas upp, sänd fel meddelande.
+		// Annars skapa inlägget.
+		if ($this->form_validation->run() == FALSE || $this->image_upload() == FALSE)
+		{
+			$error = array('error' => $this->upload->display_errors()); //Error tilldelas antingen ett felmeddelande eller null.
+			
+			$this->view('post.php', $error); // Kör vyn.
+		}
+		else
+		{
+			$meta_data = array('upload_data' => $this->upload->data()); // Data om den uppladdade bilden.
+			
+			$this->load->model('blog_model'); // Laddar modell.
+			$data = $this->blog_model->set_post( $meta_data ); // Kör modell
+			
+			$this->view('post.php', $data); // Kör vyn.
+		}		
+	}
+	
+	/**
+	 * Laddar upp fil om config tillåter.
+	 * 
+	 * @return Om filen kunde laddas upp retuneras TRUE annars retuneras FALSE.
+	 */
+	private function image_upload()
+	{
+		$image_upload = FALSE;
+		
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '100';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+	
+		$this->upload->initialize($config);
+		
+		// Om filen laddas upp, retunera TRUE.
+		if ( $this->upload->do_upload() )
+		{
+			$image_upload = TRUE;
+		}
+		
+		return $image_upload;
 	}
 	
 	/**

@@ -44,7 +44,7 @@ class Account_model extends CI_Model {
 						// Skapa session.
 						if ( $this->mysession->is_session_started() === FALSE ) {
 							session_start();
-							$_SESSION['session'] = '1';
+							$_SESSION['session'] = $data['name'];
 							$data['message'] = 'Välkomen, du är nu inloggad!';
 						}
 					}else{ $data['message'] = 'Felaktigt användarnamn och/eller felaktigt lösenord!';}
