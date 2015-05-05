@@ -28,7 +28,11 @@ class Blog extends CI_Controller {
 	public function show_flow()
 	{
 		$this->load->helper('url');
-		$this->view('flow.php', null); // Kör vyn.
+		
+		$this->load->model('blog_model'); // Laddar modell.
+		$data = $this->blog_model->show_flow(); // Kör modell
+		
+		$this->view('flow.php', $data); // Kör vyn.
 	}
 	
 	/**

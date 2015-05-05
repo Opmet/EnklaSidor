@@ -13,6 +13,23 @@ class Blog_model extends CI_Model {
 	}
 	
 	/**
+	 * Hämta alla blogg inlägg från databasen.
+	 *
+	 * @return array Märkdata till vyn.
+	 */
+	public function show_flow()
+	{
+		$data = []; // Tom array.
+	
+		$sql = "SELECT * FROM Post; ";
+		$query = $this->db->query($sql);
+		$data["result"] = $query->result_array();
+	
+		return $data;
+	
+	}
+	
+	/**
 	 * Behandlar ett blogg inlägg till databasen.
 	 *
 	 * @uses $_POST['title'] Inläggets rubrik.

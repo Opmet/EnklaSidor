@@ -52,7 +52,7 @@
             <li<?php echo $header_nav_link4; ?> class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blogg <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="<?php echo site_url('blog/show_flow'); ?>">Flöde</a></li>
+                  <li><a href="<?php echo site_url('blog/show_flow'); ?>">Blogg</a></li>
                   <li class="divider"></li>
                   <li><a href="<?php echo site_url('blog/show_post'); ?>">Skapa nytt inlägg</a></li>
                   <li><a href="#">Min sida</a></li>
