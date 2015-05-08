@@ -28,6 +28,7 @@ class Blog extends CI_Controller {
 	public function show_flow()
 	{
 		$this->load->helper('url');
+		$this->load->helper('html'); //Så vi kan visa image.
 		
 		$this->load->model('blog_model'); // Laddar modell.
 		$data = $this->blog_model->show_flow(); // Kör modell
@@ -96,6 +97,19 @@ class Blog extends CI_Controller {
 	}
 	
 	/**
+	 * Visa vyn min sida.
+	 */
+	public function show_my_page()
+	{
+		$this->load->helper('url');
+	
+		//$this->load->model('blog_model'); // Laddar modell.
+		//$data = $this->blog_model->show_my_page(); // Kör modell
+	
+		$this->view('my_page.php', null); // Kör vyn.
+	}
+	
+	/**
 	 * Laddar upp fil om config tillåter.
 	 * 
 	 * @return Om filen kunde laddas upp retuneras TRUE annars retuneras FALSE.
@@ -107,8 +121,8 @@ class Blog extends CI_Controller {
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+		$config['max_width']  = '600';
+		$config['max_height']  = '600';
 	
 		$this->upload->initialize($config);
 		

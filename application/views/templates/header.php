@@ -55,7 +55,7 @@
                   <li><a href="<?php echo site_url('blog/show_flow'); ?>">Blogg</a></li>
                   <li class="divider"></li>
                   <li><a href="<?php echo site_url('blog/show_post'); ?>">Skapa nytt inlägg</a></li>
-                  <li><a href="#">Min sida</a></li>
+                  <li><a href="<?php echo site_url('blog/show_my_page'); ?>">Min sida</a></li>
                 </ul>
               </li>
           </ul>
