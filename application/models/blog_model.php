@@ -20,13 +20,17 @@ class Blog_model extends CI_Model {
 	public function show_flow()
 	{
 		$data = []; // Tom array.
-	
-		$sql = "SELECT * FROM Post; ";
+		
+		$sql = "SELECT Post.fk_user, Post.title, Post.text,
+				Post.created, Image.imagename
+		        FROM Post
+		        INNER JOIN Image
+		        ON Post.fk_image=Image.id;";
+		
 		$query = $this->db->query($sql);
 		$data["result"] = $query->result_array();
 	
 		return $data;
-	
 	}
 	
 	/**
