@@ -50,12 +50,12 @@
             <li<?php echo $header_nav_link2; ?>><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_1'); ?>">Enkla PHP-sidor</a></li>
             <li<?php echo $header_nav_link3; ?>><a href="<?php echo site_url('enkla_javascript_sidor/sorted_array'); ?>">Enkla javascript</a></li>
             <li<?php echo $header_nav_link4; ?> class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blogg <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gäst bok <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="<?php echo site_url('blog/show_flow'); ?>">Blogg</a></li>
                   <li class="divider"></li>
                   <li><a href="<?php echo site_url('blog/show_post'); ?>">Skapa nytt inlägg</a></li>
-                  <li><a href="<?php echo site_url('blog/show_my_page'); ?>">Min sida</a></li>
+                  <li><a href="<?php echo site_url('blog/show_my_page'); ?>">Mina inlägg</a></li>
                 </ul>
               </li>
           </ul>

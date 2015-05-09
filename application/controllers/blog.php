@@ -31,7 +31,8 @@ class Blog extends CI_Controller {
 		$this->load->helper('html'); //Så vi kan visa image.
 		
 		$this->load->model('blog_model'); // Laddar modell.
-		$data = $this->blog_model->show_flow(); // Kör modell
+		$data = $this->blog_model->fetch_post(); // Kör modell
+		$data += $this->blog_model->fetch_new_bloggers(); // Kör modell
 		
 		$this->view('flow.php', $data); // Kör vyn.
 	}
