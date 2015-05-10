@@ -42,7 +42,9 @@ class Blog_model extends CI_Model {
 		$data = []; // Tom array.
 	
 		$sql = "SELECT username
-		        FROM User";
+		        FROM User
+		        ORDER BY created
+				LIMIT 7;";
 	
 		$query = $this->db->query($sql);
 		$data["bloggers"] = $query->result_array();
