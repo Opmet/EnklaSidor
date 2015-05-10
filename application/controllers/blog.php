@@ -103,11 +103,23 @@ class Blog extends CI_Controller {
 	public function show_my_page()
 	{
 		$this->load->helper('url');
+		$this->load->helper('html'); //Så vi kan visa image.
+		
+		// Om session inte är startad.
+		if( $this->mysession->is_session_started() === FALSE ) {
+			session_start();
+				
+			// Om användaren inte är inloggad.
+			if( !isset($_SESSION['session']) ){
+				echo "<script type='text/javascript'>alert( 'Logga in först!' );</script>";
+				redirect('/account/login/', 'refresh');
+			}
+		}
 	
-		//$this->load->model('blog_model'); // Laddar modell.
-		//$data = $this->blog_model->show_my_page(); // Kör modell
+		$this->load->model('blog_model'); // Laddar modell.
+		$data = $this->blog_model->fetch_my_post(); // Kör modell
 	
-		$this->view('my_page.php', null); // Kör vyn.
+		$this->view('my_page.php', $data); // Kör vyn.
 	}
 	
 	/**

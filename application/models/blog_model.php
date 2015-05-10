@@ -35,7 +35,6 @@ class Blog_model extends CI_Model {
 	
 	/**
 	 * Hämta nya bloggare från databasen.
-	 *
 	 * @return array Märkdata till vyn.
 	 */
 	public function fetch_new_bloggers()
@@ -47,6 +46,30 @@ class Blog_model extends CI_Model {
 	
 		$query = $this->db->query($sql);
 		$data["bloggers"] = $query->result_array();
+	
+		return $data;
+	}
+	
+	/**
+	 * Hämta nya bloggare från databasen.
+	 *
+	 * @return array Märkdata till vyn.
+	 */
+	public function fetch_my_post()
+	{
+		$data = []; // Tom array.
+		
+		$user = $this->user(); //Hämtar namnet
+	
+		$sql = "SELECT Post.fk_user, Post.title, Post.text,
+				Post.created, Image.imagename
+		        FROM Post
+		        INNER JOIN Image
+		        ON Post.fk_image=Image.id
+		        WHERE Post.fk_user='$user';";
+	
+		$query = $this->db->query($sql);
+		$data["myposts"] = $query->result_array();
 	
 		return $data;
 	}
