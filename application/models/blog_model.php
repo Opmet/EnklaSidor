@@ -25,7 +25,8 @@ class Blog_model extends CI_Model {
 				Post.created, Image.imagename
 		        FROM Post
 		        INNER JOIN Image
-		        ON Post.fk_image=Image.id;";
+		        ON Post.fk_image=Image.id
+				WHERE Post.is_active='1';";
 		
 		$query = $this->db->query($sql);
 		$data["posts"] = $query->result_array();
@@ -63,12 +64,12 @@ class Blog_model extends CI_Model {
 		
 		$user = $this->user(); //Hämtar namnet
 	
-		$sql = "SELECT Post.fk_user, Post.title, Post.text,
+		$sql = "SELECT Post.id, Post.fk_user, Post.title, Post.text,
 				Post.created, Image.imagename
 		        FROM Post
 		        INNER JOIN Image
 		        ON Post.fk_image=Image.id
-		        WHERE Post.fk_user='$user';";
+		        WHERE Post.fk_user='$user' AND Post.is_active='1';";
 	
 		$query = $this->db->query($sql);
 		$data["myposts"] = $query->result_array();
@@ -99,8 +100,8 @@ class Blog_model extends CI_Model {
 		// Hämta bildens id.
 		$fk_image = $this->last_insert();
 		
-		$sql = "INSERT INTO Post (fk_user, fk_image, title, text)
-        VALUES (".$this->db->escape($fk_user).", ".$this->db->escape($fk_image).", ".$this->db->escape($title).", ".$this->db->escape($message).")";
+		$sql = "INSERT INTO Post (fk_user, fk_image, title, text, is_active)
+        VALUES (".$this->db->escape($fk_user).", ".$this->db->escape($fk_image).", ".$this->db->escape($title).", ".$this->db->escape($message).", '1')";
 		
 		// Om kontot inte kunde skapas skicka felmeddelande.
 		// Annars kunde kontot skapas.
@@ -113,6 +114,22 @@ class Blog_model extends CI_Model {
 		
 		return $data;
 		
+	}
+	
+	/**
+	 * Markera post som bort taget. 0 = ej aktiv.
+	 * @param $p_id Posten som ska markeras.
+	 */
+	public function remove_post($p_id)
+	{
+		$user = $this->user(); //Hämtar användarens namn. För att testa att inloggning verkligen finns.
+	
+		$sql = "UPDATE Post
+                SET is_active='0'
+                WHERE id='$p_id' AND fk_user='$user';";
+	
+		$query = $this->db->query($sql);
+	
 	}
 	
 	/**

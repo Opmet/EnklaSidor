@@ -123,6 +123,23 @@ class Blog extends CI_Controller {
 	}
 	
 	/**
+	 * Markera post som bort taget.
+	 * @uses $_POST['id'] Posten som ska markeras.
+	 */
+	public function remove_post()
+	{
+		$this->load->helper('url');
+		$this->load->library('My_Form_validation');
+		
+		$id = $this->my_form_validation->test_input($_POST["id"]);
+		
+		$this->load->model('blog_model'); // Laddar modell.
+		$this->blog_model->remove_post($id); // Kör modell
+		
+		redirect('/blog/show_my_page/', 'refresh');
+	}
+	
+	/**
 	 * Laddar upp fil om config tillåter.
 	 * 
 	 * @return Om filen kunde laddas upp retuneras TRUE annars retuneras FALSE.
