@@ -63,24 +63,25 @@ class Blog extends CI_Controller {
 	 * 
 	 * @uses $_POST['title'] Inläggets rubrik.
 	 * @uses $_POST['message'] Meddelandet.
-	 * @uses image_upload() För att ladda upp bild.
 	 */
 	public function set_post()
 	{
 		$this->load->helper(array('form', 'url'));
 		
-		$this->load->library('My_Form_validation');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 		
-		$this->form_validation->set_rules('title', 'Rubrik', 'required');
-		$this->form_validation->set_rules('message', 'Meddelande', 'required');
-		
+		$this->form_validation->set_rules('title', 'Rubrik', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('message', 'Meddelande', 'required|trim|xss_clean');
+		$this->form_validation->set_rules('userfile', 'File', 'trim|xss_clean');
 		$this->form_validation->set_message('required', 'Fyll i fältet: %s!');
+		
+		// Försöker ladda upp bild, retunerar TRUE,FALSE eller NULL.
+		$is_image_uploaded = $this->image_upload();
 		
 		// Om fälten inte validerar eller bilden inte kunde laddas upp, sänd fel meddelande.
 		// Annars skapa inlägget.
-		if ($this->form_validation->run() == FALSE || $this->image_upload() == FALSE)
+		if ($this->form_validation->run() == FALSE || $is_image_uploaded === FALSE)
 		{
 			$error = array('error' => $this->upload->display_errors()); //Error tilldelas antingen ett felmeddelande eller null.
 			
@@ -140,9 +141,9 @@ class Blog extends CI_Controller {
 	}
 	
 	/**
-	 * Laddar upp fil om config tillåter.
+	 * Om användaren har bifogat en bild. Ladda upp bild om config tillåter.
 	 * 
-	 * @return Om filen kunde laddas upp retuneras TRUE annars retuneras FALSE.
+	 * @return Om filen kunde laddas upp retuneras TRUE annars FALSE eller NULL om ingen bild bifogats.
 	 */
 	private function image_upload()
 	{
@@ -152,15 +153,21 @@ class Blog extends CI_Controller {
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '100';
 		$config['max_width']  = '600';
-		$config['max_height']  = '600';
+		$config['max_height']  = '300';
 	
 		$this->upload->initialize($config);
 		
-		// Om filen laddas upp, retunera TRUE.
-		if ( $this->upload->do_upload() )
+		//Om bild finns försök att ladda upp den.
+		//Annars har användaren valt att inte bifoga någon bild.
+		if( $_FILES AND $_FILES['userfile']['name'] )
 		{
-			$image_upload = TRUE;
+			$image_upload = $this->upload->do_upload();
 		}
+		else
+		{
+			$image_upload = NULL;
+		}
+		
 		
 		return $image_upload;
 	}
