@@ -124,6 +124,28 @@ class Blog extends CI_Controller {
 	}
 	
 	/**
+	 * Visa en användares sida.
+	 * @param p_page är sidan som vi vill visa.
+	 */
+	public function show_user_page($p_page)
+	{
+		$this->load->helper('url');
+		$this->load->helper('html'); //Så vi kan visa image.
+		$this->load->library('My_Form_validation');
+	
+		//Validera input
+		$page = $this->my_form_validation->test_input($p_page);
+	
+		//Returnerar den avkodade URL'en, som en sträng
+		$page = rawurldecode($page);
+	
+		$this->load->model('blog_model'); // Laddar modell.
+		$data = $this->blog_model->fetch_user_post($page); // Kör modell
+	
+		$this->view('dynamic_user_page.php', $data); // Kör vyn.
+	}
+	
+	/**
 	 * Markera post som bort taget.
 	 * @uses $_POST['id'] Posten som ska markeras.
 	 */

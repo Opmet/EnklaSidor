@@ -54,7 +54,7 @@ class Blog_model extends CI_Model {
 	}
 	
 	/**
-	 * Hämta nya bloggare från databasen.
+	 * Hämta mina poster.
 	 *
 	 * @return array Märkdata till vyn.
 	 */
@@ -73,6 +73,34 @@ class Blog_model extends CI_Model {
 	
 		$query = $this->db->query($sql);
 		$data["myposts"] = $query->result_array();
+	
+		return $data;
+	}
+	
+	/**
+	 * Hämta en användares poster.
+	 *
+	 * @param p_user är användaren vars poster som ska hämtas.
+	 * @return array Märkdata till vyn.
+	 */
+	public function fetch_user_post($p_user)
+	{
+		$data = []; // Tom array.
+	
+		$sql = "SELECT Post.id, Post.fk_user, Post.title, Post.text,
+		Post.created, Image.imagename
+		FROM Post
+		INNER JOIN Image
+		ON Post.fk_image=Image.id
+		WHERE Post.fk_user='$p_user' AND Post.is_active='1';";
+	
+		//Om parametern är minder än 30 tecken kör query.
+		if( strlen($p_user) < 30 ){
+				
+			$query = $this->db->query($sql);
+			$data["post"] = $query->result_array();
+			$data["username"] = $p_user;
+		}
 	
 		return $data;
 	}
