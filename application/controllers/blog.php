@@ -20,6 +20,10 @@ class Blog extends CI_Controller {
 		$this->m_headlab['header_nav_link2'] = '';
 		$this->m_headlab['header_nav_link3'] = '';
 		$this->m_headlab['header_nav_link4'] = ' class="active"';
+		
+		//Sätter locale så vi kan få svensk tid i vyn.
+		date_default_timezone_set("Europe/Stockholm");
+		setlocale(LC_TIME, 'sv_SE.utf8');
 	}
 	
 	/**
@@ -125,6 +129,7 @@ class Blog extends CI_Controller {
 	
 	/**
 	 * Visa en användares sida.
+	 * 
 	 * @param p_page är sidan som vi vill visa.
 	 */
 	public function show_user_page($p_page)

@@ -2,7 +2,7 @@
       <div class="container">
 
       <div class="blog-header">
-        <h1 class="blog-title">Blogg</h1>
+        <h1 class="blog-title">Mina inlägg</h1>
         <p class="lead blog-description"></p>
       </div>
 
@@ -19,7 +19,9 @@
               </form>
               <div class="blog-post">
                  <h2 class="blog-post-title"><?php echo $data["title"];?></h2>
-                 <p class="blog-post-meta"><?php echo $data["created"];?> av <a href="<?php echo site_url('blog/show_user_page/' . $data["fk_user"]); ?>" title="Länk till användarens blogg"><?php echo $data["fk_user"];?></a></p>
+                 <p class="blog-post-meta">
+                    <?php echo strftime(" %e %B, %Y", strtotime( $data["created"] ));?>.
+                 </p>
                  <p><?php echo $data["text"];?></p>
                  <?php echo img('uploads/' . $data["imagename"]); ?>
                  <hr />
