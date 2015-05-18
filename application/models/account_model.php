@@ -72,35 +72,6 @@ class Account_model extends CI_Model {
 	}
 	
 	/**
-	 * En användare skapar ett nytt konto på fil.
-	 * @deprecated Ersatt med funktionen register().
-	 * @return array Om kontot kunde skapas eller inte.
-	 */
-	public function newAccount()
-	{
-		$data = []; // Tom array.
-		
-		// Om post är aktiv. Validera och skriv till fil.
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$data['name'] = $this->my_form_validation->test_input($_POST["name"]);
-			$data['email'] = $this->my_form_validation->test_input($_POST["email"]);
-			$data['password'] = $this->my_form_validation->test_input($_POST["password"]);
-			
-			//Om lösenordet innehåller 3 eller fler tecken skapa kontot.
-			//Annars skicka felmedelande.
-			if ( strlen($data['password']) >= 3 )
-			{
-				// Skriver användardatan till fil.
-				$data['message'] = $this->createAccount($data['name'], $data['email'], $data['password']);
-			}else{
-				$data['message'] = 'Lösenordet måste innehålla minst 3 tecken!';
-			}
-		}
-		
-		return $data;
-	}
-	
-	/**
 	 * Användare registrerar sig.
 	 * @return array Om kontot kunde skapas eller inte.
 	 */
@@ -145,35 +116,6 @@ class Account_model extends CI_Model {
 	}
 	
 	/**
-	 *  Skriver användardata till fil.
-	 *
-	 *  @deprecated Ersatt med funktionen registerAccount().
-	 *  
-	 *  För enkelhetens skull används codeigniters egna fil helper för att skriva till filen.
-	 *  @link https://ellislab.com/codeIgniter/user-guide/helpers/file_helper.html Codeigniters file helper.
-	 *
-	 *  @param string $p_name Användarens namn.
-	 *  @param string $p_email Användarens epost.
-	 *  @param string $p_password Användarens lösenord.
-	 *
-	 *  @return string Om kontot kunde skapas eller inte.
-	 */
-	private function createAccount($p_name,$p_email,$p_password)
-	{
-		$filedata = 'Namn=' . $p_name . ';Epost=' . $p_email . ';Lösenord=' . $p_password . ";\n";
-		$message;
-	
-		if (!write_file('./files/accounts.txt', $filedata, 'a'))
-		{
-			$message = 'Kunde inte skapa konto!';
-		}else{
-			$message = 'Ditt konto har skapats!';
-		}
-	
-		return $message;
-	}
-	
-	/**
 	 *  Skriver användardata till databas.
 	 *
 	 *  @param string $p_name Användarens namn.
@@ -197,43 +139,6 @@ class Account_model extends CI_Model {
 		}
 		
 		return $message;
-	}
-	
-	/**
-	 *  Hämtar ett konto.
-	 *
-	 *  @deprecated Ersatt med funktionen testAccount().
-	 *  
-	 *  För enkelhetens skull används codeigniters egna fil helper för att skriva till filen.
-	 *  @link https://ellislab.com/codeIgniter/user-guide/helpers/file_helper.html Codeigniters file helper.
-	 *
-	 *  @param string $p_email Epost.
-	 *  @param string $p_password Lösenord.
-	 *
-	 *  @return string boolean Om kontot hittas retunerar en sträng annars false.
-	 */
-	private function findAccount($p_email,$p_password)
-	{
-		$findme = 'Epost=' . $p_email . ';Lösenord=' . $p_password . ";";
-		$account = false;
-		$start = false;
-		$end = false;
-	
-		// Laddar in filen i en String.
-		$file = read_file('./files/accounts.txt');
-	
-		// Hitta början och slutet på kontot med Skiftläges-okänslig strängsökning.
-		$start = stripos($file, $findme);
-		$end = stripos($file, "\n", $start);
-	
-		// Om $start inte är false så finns epost och lösenord i filen.
-		if ($start !== false) {;
-		$length = strlen($file); // Räkna ut fil-längden
-			
-		$account = substr($file, $start, ($end - $length) ); // Substring
-		}
-	
-		return $account;
 	}
 	
 	/**
