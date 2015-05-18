@@ -70,7 +70,8 @@ class Blog_model extends CI_Model {
 		        FROM Post
 		        INNER JOIN Image
 		        ON Post.fk_image=Image.id
-		        WHERE Post.fk_user='$user' AND Post.is_active='1';";
+		        WHERE Post.fk_user='$user' AND Post.is_active='1'
+		        ORDER BY Post.created DESC;";
 	
 		$query = $this->db->query($sql);
 		$data["myposts"] = $query->result_array();
@@ -93,7 +94,8 @@ class Blog_model extends CI_Model {
 		FROM Post
 		INNER JOIN Image
 		ON Post.fk_image=Image.id
-		WHERE Post.fk_user='$p_user' AND Post.is_active='1';";
+		WHERE Post.fk_user='$p_user' AND Post.is_active='1'
+		ORDER BY Post.created DESC;";
 	
 		//Om parametern är minder än 30 tecken kör query.
 		if( strlen($p_user) < 30 ){
