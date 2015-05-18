@@ -44,7 +44,7 @@ class Blog_model extends CI_Model {
 	
 		$sql = "SELECT username
 		        FROM User
-		        ORDER BY created
+		        ORDER BY created DESC
 				LIMIT 7;";
 	
 		$query = $this->db->query($sql);
