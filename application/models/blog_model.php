@@ -26,7 +26,8 @@ class Blog_model extends CI_Model {
 		        FROM Post
 		        INNER JOIN Image
 		        ON Post.fk_image=Image.id
-				WHERE Post.is_active='1';";
+				WHERE Post.is_active='1'
+				ORDER BY Post.created DESC;";
 		
 		$query = $this->db->query($sql);
 		$data["posts"] = $query->result_array();
