@@ -52,10 +52,10 @@
             <li<?php echo $header_nav_link4; ?> class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gäst bok <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="<?php echo site_url('blog/show_flow'); ?>">Blogg</a></li>
+                  <li><a href="<?php echo site_url('blog/show_flow'); ?>"><span class="glyphicon glyphicon-globe">&nbsp;</span>Blogg</a></li>
                   <li class="divider"></li>
-                  <li><a href="<?php echo site_url('blog/show_post'); ?>">Skapa nytt inlägg</a></li>
-                  <li><a href="<?php echo site_url('blog/show_my_page'); ?>">Mina inlägg</a></li>
+                  <li><a href="<?php echo site_url('blog/show_post'); ?>"><span class="glyphicon glyphicon-share">&nbsp;</span>Skapa nytt inlägg</a></li>
+                  <li><a href="<?php echo site_url('blog/show_my_page'); ?>"><span class="glyphicon glyphicon-wrench">&nbsp;</span>Mina inlägg</a></li>
                 </ul>
               </li>
           </ul>
