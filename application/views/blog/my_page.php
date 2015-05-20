@@ -23,7 +23,7 @@
                     <?php echo strftime(" %e %B, %Y", strtotime( $data["created"] ));?>.
                  </p>
                  <p><?php echo $data["text"];?></p>
-                 <?php echo img('uploads/' . $data["imagename"]); ?>
+                 <?php if( strlen($data["imagename"]) !== 0 ){echo img('uploads/' . $data["imagename"]);} ?>
                  <hr />
               </div><!-- /.blog-post -->
            <?php endforeach;?>

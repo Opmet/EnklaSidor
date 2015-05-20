@@ -18,7 +18,7 @@
                     <a href="<?php echo site_url('blog/show_user_page/' . $data["fk_user"]); ?>" title="Länk till användarens blogg"><?php echo $data["fk_user"];?></a>
                  </p>
                  <p><?php echo $data["text"];?></p>
-                 <?php echo img('uploads/' . $data["imagename"]); ?>
+                 <?php if( strlen($data["imagename"]) !== 0 ){echo img('uploads/' . $data["imagename"]);} ?>
                  <hr />
               </div><!-- /.blog-post -->
            <?php endforeach;?>

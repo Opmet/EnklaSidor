@@ -45,7 +45,7 @@
 | the active record class
 */
 
-$active_group = 'ltu';
+$active_group = 'localhost';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
