@@ -45,7 +45,7 @@
 | the active record class
 */
 
-$active_group = 'localhost';
+$active_group = 'ltu';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
@@ -81,7 +81,7 @@ $db['localhost']['autoinit'] = TRUE;
 $db['localhost']['stricton'] = FALSE;
 
 $db['ltu']['hostname'] = 'utbweb.its.ltu.se:3308';
-$db['ltu']['username'] = 'joaand-5';
+$db['ltu']['username'] = 'joaand_5';
 $db['ltu']['password'] = 'c85ryaCU';
 $db['ltu']['database'] = 'D0019E_joaand_5';
 $db['ltu']['dbdriver'] = 'mysql';
