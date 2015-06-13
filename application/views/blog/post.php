@@ -8,25 +8,25 @@
       <div class="row col-md-10">
          <h1>Nytt inlägg</h1>
          <br /><br />
-         <div ng-app="MyJavascript" ng-controller="FormController">
+         <div data-ng-app="MyJavascript" data-ng-controller="FormController">
          <form action="<?php echo htmlspecialchars(site_url('blog/set_post')); ?>" method="post" enctype="multipart/form-data" class="form-horizontal" name="upload">
             <div class="form-group">
                <label for="title" class="col-md-3 control-label">Rubrik:</label>
                <div class="col-md-4">
-                  <input type="text" name="title" class="form-control" placeholder="Rubrik" ng-model="checkName" required>
+                  <input type="text" id="title" name="title" class="form-control" placeholder="Rubrik" data-ng-model="checkName" required>
                </div>
             </div>
              <div class="form-group">
                <label for="meddelande" class="col-md-3 control-label">Meddelande:</label>
                <div class="col-md-6">
-                  <textarea name="message" class="form-control" rows="3" placeholder="Meddelande" ng-model="checkMessage" required></textarea>
+                  <textarea id="meddelande" name="message" class="form-control" rows="3" placeholder="Meddelande" data-ng-model="checkMessage" required></textarea>
                </div>
             </div>
             <div class="form-group">
                <label for="image" class="col-md-3 control-label">Bild:</label>
                <div class="col-md-6">
                   Lägg till bild: gif|jpg|png <br />
-                  <input type="file" name="userfile">
+                  <input type="file" id="image" name="userfile">
                </div>
             </div>
             <div class="form-group">

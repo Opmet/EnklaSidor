@@ -25,7 +25,7 @@
     </script>
     
     <!-- Teckenkodning med åäö-->
-    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="beskrivning" content="En övning på att skapa enkla webbsidor" />
     <meta name="keywords" content="HTML,CSS,XML,JavaScript" />
     <meta name="author" content="Joakim Andersson" />
@@ -49,7 +49,7 @@
             <li<?php echo $header_nav_link1; ?>><a href="<?php echo site_url('welcome/about'); ?>">Om</a></li>
             <li<?php echo $header_nav_link2; ?>><a href="<?php echo site_url('enkla_PHP_sidor/view/php_sida_1'); ?>">Enkla PHP-sidor</a></li>
             <li<?php echo $header_nav_link3; ?>><a href="<?php echo site_url('enkla_javascript_sidor/sorted_array'); ?>">Enkla javascript</a></li>
-            <li<?php echo $header_nav_link4; ?> class="dropdown">
+            <li<?php echo $header_nav_link4; ?>>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gäst bok <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="<?php echo site_url('blog/show_flow'); ?>"><span class="glyphicon glyphicon-globe">&nbsp;</span>Blogg</a></li>

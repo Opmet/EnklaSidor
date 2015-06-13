@@ -19,7 +19,7 @@ class Blog extends CI_Controller {
 		$this->m_headlab['header_nav_link1'] = '';
 		$this->m_headlab['header_nav_link2'] = '';
 		$this->m_headlab['header_nav_link3'] = '';
-		$this->m_headlab['header_nav_link4'] = ' class="active"';
+		$this->m_headlab['header_nav_link4'] = ' class="active dropdown"';
 		
 		//Sätter locale så vi kan få svensk tid i vyn.
 		date_default_timezone_set("Europe/Stockholm");

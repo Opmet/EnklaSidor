@@ -15,24 +15,24 @@
       <div class="row col-md-10">
          <h1>Kontakta oss</h1>
          <br /><br />
-         <div ng-app="MyJavascript" ng-controller="FormController">
+         <div data-ng-app="MyJavascript" data-ng-controller="FormController">
          <form action="<?php echo htmlspecialchars(site_url('enkla_javascript_sidor/email_us')); ?>" method="post" class="form-horizontal" name="checkForm">
             <div class="form-group">
                <label for="password" class="col-md-3 control-label">Ditt namn:</label>
                <div class="col-md-4">
-                  <input type="text" name="name" class="form-control" placeholder="Namn" ng-model="checkName" required>
+                  <input type="text" id="password" name="name" class="form-control" placeholder="Namn" data-ng-model="checkName" required>
                </div>
             </div>
             <div class="form-group">
                <label for="email" class="col-md-3 control-label">Din epost:</label>
                <div class="col-md-4">
-                  <input type="email" name="email" class="form-control" placeholder="Epost" ng-model="checkEmail" required>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="Epost" data-ng-model="checkEmail" required>
                </div>
             </div>
              <div class="form-group">
                <label for="meddelande" class="col-md-3 control-label">Meddelande:</label>
                <div class="col-md-6">
-                  <textarea name="message" class="form-control" rows="3" placeholder="Meddelande" ng-model="checkMessage" required></textarea>
+                  <textarea id="meddelande" name="message" class="form-control" rows="3" placeholder="Meddelande" data-ng-model="checkMessage" required></textarea>
                </div>
             </div>
             <div class="form-group">
