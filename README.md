@@ -1,4 +1,4 @@
-# EnklaSidor
+# Blogg
 D0019E Webbutveckling II – Skriptspråk, VT15
 
 ## Installera till eclipse
